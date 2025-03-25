@@ -12,16 +12,16 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Object Interaction")]
     public float objectDetectionRange = 10f;
-    public Transform handPosition;
-    public float throwForce = 15f;
+    public LayerMask layerMask;
     private Rigidbody enemyRb;
     private float lastAttackTime = 0f;
-    private GameObject heldObject = null;
     private readonly List<string> validTags = new() { "objectSmall", "objectMedium", "objectBig" };
+    private EnemyThrowManager throwManager;
 
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
+        throwManager = GetComponent<EnemyThrowManager>();
         enemyRb.isKinematic = false;
         enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         enemyRb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -34,31 +34,12 @@ public class EnemyAI : MonoBehaviour
         if (distance > attackRange)
         {
             MoveTowardsPlayer();
-            if (heldObject == null)
-                FindAndPickObject();
+            FindAndPickObject();
         }
         else if (Time.time >= lastAttackTime + attackCooldown)
         {
             lastAttackTime = Time.time;
             AttackPlayer();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        HandleGravity();
-    }
-
-    private void HandleGravity()
-    {
-        RaycastHit hit;
-        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f);
-
-        Debug.DrawRay(transform.position, Vector3.down * 1.5f, isGrounded ? Color.green : Color.red);
-
-        if (!isGrounded)
-        {
-            enemyRb.AddForce(Vector3.down * 20f, ForceMode.Acceleration);
         }
     }
 
@@ -80,65 +61,14 @@ public class EnemyAI : MonoBehaviour
 
     private void FindAndPickObject()
     {
-        Collider[] objects = Physics.OverlapSphere(transform.position, objectDetectionRange);
-
+        Collider[] objects = Physics.OverlapSphere(transform.position, objectDetectionRange, layerMask, QueryTriggerInteraction.UseGlobal);
+        
         foreach (Collider obj in objects)
         {
             if (!validTags.Contains(obj.tag)) continue;
-
-            heldObject = obj.gameObject;
-            heldObject.transform.position = handPosition.position;
-            //heldObject.transform.SetParent(handPosition);
-
-            if (heldObject.TryGetComponent(out Rigidbody objRb))
-            {
-                objRb.isKinematic = true;
-                objRb.detectCollisions = false;
-            }
-
-            Debug.Log($"Objeto recogido: {heldObject.name}");
-
-            if (heldObject != null && heldObject.activeInHierarchy)
-            {
-                Invoke(nameof(ThrowObjectAtPlayer), 1f);
-            }
+            throwManager.PickUpObject(obj.gameObject);
             break;
         }
     }
-
-    private void ThrowObjectAtPlayer()
-    {
-        if (heldObject == null || !heldObject.activeInHierarchy)
-        {
-            Debug.LogWarning("No hay ninguno objeto.");
-            return;
-        }
-
-        if (heldObject.TryGetComponent(out Rigidbody objRb))
-        {
-            objRb.isKinematic = false;
-            objRb.detectCollisions = true;
-            objRb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-            //heldObject.transform.SetParent(null);
-            //objRb.velocity = Vector3.zero;
-            //objRb.angularVelocity = Vector3.zero;
-            objRb.WakeUp();
-
-            Vector3 throwDirection = (player.position - handPosition.position).normalized;
-            throwDirection.y = 0.5f;
-            objRb.linearVelocity = Vector3.zero;
-            objRb.angularVelocity = Vector3.zero;
-            objRb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
-
-            if (heldObject.TryGetComponent(out ThrowableObject throwable))
-            {
-                Debug.Log($"Lanzado {heldObject.name} con {throwable.damage} de daño.");
-            }
-            // Debug.Log($"Lanzando {heldObject.name} hacia {player.name}");
-
-            heldObject = null;
-        }
-    }
 }
-
 
