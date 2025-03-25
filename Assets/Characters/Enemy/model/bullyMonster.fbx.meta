@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b9a7b286d443b9443bb6421b0424f6f2
+guid: 8de5ef4f7182df74eaac66ad3dc98635
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 151a0c08113a07a40970e43c72550860, type: 2}
+      name: BullyM
+    second: {fileID: 2100000, guid: 22352b0933a2c814ca5960e742621a2b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -73,8 +73,8 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 90
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
