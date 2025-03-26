@@ -8,19 +8,26 @@ public class EnemyThrowManager : MonoBehaviour
     public float throwForce = 15f;
     private List<GameObject> objectQueue = new();
     private bool isHoldingObject = false;
-    
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     public void PickUpObject(GameObject obj)
     {
         if (isHoldingObject || objectQueue.Contains(obj)) return;
-        
+
         objectQueue.Add(obj);
         isHoldingObject = true;
         StartCoroutine(HandleObjectThrow());
     }
-    
+
     private IEnumerator HandleObjectThrow()
     {
-        yield return new WaitForSeconds(1f); 
+        //animator.SetBool("isRunning", false);
+        //animator.SetTrigger("Throw"); 
+        yield return new WaitForSeconds(1f);
 
         if (objectQueue.Count > 0)
         {
@@ -31,11 +38,11 @@ public class EnemyThrowManager : MonoBehaviour
 
         isHoldingObject = false;
     }
-    
+
     private void ThrowObject(GameObject obj)
     {
         if (obj == null) return;
-        
+
         if (obj.TryGetComponent(out Rigidbody objRb))
         {
             objRb.isKinematic = false;
@@ -49,6 +56,8 @@ public class EnemyThrowManager : MonoBehaviour
             objRb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
 
             Debug.Log($"Lanzando {obj.name} hacia el jugador");
+
+            animator.SetTrigger("Throw");
         }
     }
 }
