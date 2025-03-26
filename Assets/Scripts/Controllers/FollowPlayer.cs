@@ -3,9 +3,8 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
-    public GameObject playerBody; // Referencia al cuerpo del jugador (así podemos ocultarlo en 1ª persona)
-
-    private Vector3 offset = new Vector3(0f, 4f, -4f);
+    
+    private Vector3 offset = new Vector3(167.31f, 1.5f, 125f);
     public float RotationSpeed = 200.0f;
     public float zoomSpeed = 2.0f;
     public float minZoom = 2f;
@@ -37,9 +36,9 @@ public class FollowPlayer : MonoBehaviour
             hudTimer = hudDisplayTime;
 
             // Activar o desactivar el cuerpo del jugador en primera persona
-            if (playerBody != null)
+            if (player != null)
             {
-                playerBody.SetActive(!isFirstPerson);
+                player.SetActive(!isFirstPerson);
             }
         }
     }
@@ -57,7 +56,7 @@ public class FollowPlayer : MonoBehaviour
 
             yaw += mouseX;
             pitch -= mouseY;
-            pitch = Mathf.Clamp(pitch, -80f, 80f);
+            //pitch = Mathf.Clamp(pitch, -80f, 80f);
 
             transform.rotation = Quaternion.Euler(pitch, yaw, 0);
         }
@@ -67,8 +66,8 @@ public class FollowPlayer : MonoBehaviour
             float mouseY = Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime;
 
             yaw += mouseX;
-            pitch -= mouseY;
-            pitch = Mathf.Clamp(pitch, -30f, 60f);
+            pitch += mouseY;
+            //pitch = Mathf.Clamp(pitch, -10f, -60f);
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             targetZoom -= scroll * zoomSpeed;
