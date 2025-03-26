@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc333a2ac54d17044acacbb11bf42d05
+guid: 482687a0096b8d540b2113d12bb97dcd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BullyM
-    second: {fileID: 2100000, guid: 22352b0933a2c814ca5960e742621a2b, type: 2}
+      name: pistol1
+    second: {fileID: 2100000, guid: 013a33aea97e4674fa7fdc324ba6c8ea, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -38,7 +38,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -93,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1.5
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
