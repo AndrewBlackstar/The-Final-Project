@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 2f;
     public float pushForce = 5f;
     public float attackCooldown = 1f;
+    public bool canMove = true; 
 
     [Header("Object Interaction")]
     public float objectDetectionRange = 10f;
@@ -39,7 +40,7 @@ public class EnemyAI : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance > attackRange)
+        if (distance > attackRange && canMove) // Se mueve si canMove es true
         {
             MoveTowardsPlayer();
             FindAndPickObject();

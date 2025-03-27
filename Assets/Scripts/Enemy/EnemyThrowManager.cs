@@ -20,13 +20,15 @@ public class EnemyThrowManager : MonoBehaviour
 
         objectQueue.Add(obj);
         isHoldingObject = true;
+
+       
+        animator.SetTrigger("Throw");
         StartCoroutine(HandleObjectThrow());
     }
 
     private IEnumerator HandleObjectThrow()
-    {
-        //animator.SetBool("isRunning", false);
-        //animator.SetTrigger("Throw"); 
+    { 
+        GetComponent<EnemyAI>().canMove = false;
         yield return new WaitForSeconds(1f);
 
         if (objectQueue.Count > 0)
@@ -37,6 +39,7 @@ public class EnemyThrowManager : MonoBehaviour
         }
 
         isHoldingObject = false;
+        GetComponent<EnemyAI>().canMove = true;
     }
 
     private void ThrowObject(GameObject obj)
