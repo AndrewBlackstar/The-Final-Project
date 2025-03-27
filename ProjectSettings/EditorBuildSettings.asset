@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/FlowSceneMenu/MainMenu.unity
     guid: e644e0568ad5a8d44b8c787f1ab7f8ee
   - enabled: 1
-    path: Assets/Scenes/GameCoreScenes/FirstLevel.unity
-    guid: 35ee5c80d942e454f9f180adc6e5195b
+    path: Assets/Scenes/Demo_City_Player.unity
+    guid: cf6afba4a366b474a87b02af3824295a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
