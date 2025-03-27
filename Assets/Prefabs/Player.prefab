@@ -199,6 +199,37 @@ Transform:
   - {fileID: 219555564414896507}
   m_Father: {fileID: 697894906991907253}
   m_LocalEulerAnglesHint: {x: 2.491223, y: 2.5374138, z: -0.8622295}
+--- !u!1 &649910633774341391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2533758281056398064}
+  m_Layer: 0
+  m_Name: ObjectContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2533758281056398064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649910633774341391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0061, y: 0.0626, z: 0.0133}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9004639136098092812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715055210289399827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4facc2eb1c225784b8efffb137f90859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 10
+  moveForce: 1
   cameraTransform: {fileID: 0}
 --- !u!54 &5554441158108463849
 Rigidbody:
@@ -1132,10 +1163,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 1.1822826
+  m_Radius: 0.11930084
+  m_Height: 1.1808548
   m_Direction: 1
-  m_Center: {x: 0, y: 0.589719, z: 0}
+  m_Center: {x: 0, y: 0.5904329, z: -0.028968811}
 --- !u!1 &3482338722901240574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,6 +2297,7 @@ Transform:
   - {fileID: 5463596850042060225}
   - {fileID: 5998047104872708463}
   - {fileID: 8732730597450763268}
+  - {fileID: 2533758281056398064}
   m_Father: {fileID: 6822584666600238394}
   m_LocalEulerAnglesHint: {x: 9.43379, y: -6.4973216, z: -9.839349}
 --- !u!1 &6792077862684613165
