@@ -67,7 +67,7 @@ public class FollowPlayer : MonoBehaviour
 
             yaw += mouseX;
             pitch += mouseY;
-            //pitch = Mathf.Clamp(pitch, -10f, -60f);
+            pitch = Mathf.Clamp(pitch, -100f, 10f);
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             targetZoom -= scroll * zoomSpeed;

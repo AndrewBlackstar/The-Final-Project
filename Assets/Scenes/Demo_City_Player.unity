@@ -31210,7 +31210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &998879439
 Transform:
   m_ObjectHideFlags: 0
@@ -46785,6 +46785,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 808826628058506037, guid: 2ae3b2d5607cfe54a9b3f28c712d9899, type: 3}
+      propertyPath: m_Height
+      value: 1.1808548
+      objectReference: {fileID: 0}
+    - target: {fileID: 808826628058506037, guid: 2ae3b2d5607cfe54a9b3f28c712d9899, type: 3}
+      propertyPath: m_Radius
+      value: 0.11930084
+      objectReference: {fileID: 0}
+    - target: {fileID: 808826628058506037, guid: 2ae3b2d5607cfe54a9b3f28c712d9899, type: 3}
+      propertyPath: m_Center.y
+      value: 0.5904329
+      objectReference: {fileID: 0}
+    - target: {fileID: 808826628058506037, guid: 2ae3b2d5607cfe54a9b3f28c712d9899, type: 3}
+      propertyPath: m_Center.z
+      value: -0.028968811
+      objectReference: {fileID: 0}
     - target: {fileID: 3228291196896063000, guid: 2ae3b2d5607cfe54a9b3f28c712d9899, type: 3}
       propertyPath: m_Name
       value: Player
@@ -62550,7 +62566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!154 &1974867443
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -62567,7 +62583,7 @@ TerrainCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: d5d9c38edbea5654a9de898e8740f833, type: 2}
   m_EnableTreeColliders: 1
