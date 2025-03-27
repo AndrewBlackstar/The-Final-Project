@@ -4,37 +4,50 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
+    // Variables públicas para ajustar las fuerzas de movimiento y salto
     public float moveForce = 10f;  // Fuerza de movimiento
+    public float jumpForce = 10.0f;  // Fuerza de salto
+
+    // Referencias a otros componentes y objetos en la escena
     public Transform cameraTransform;  // Cámara para orientar el movimiento
     private Rigidbody rb;  // Componente Rigidbody de la esfera
     private Animator animatorPlayer;  // Animator del jugador
 
-    //private GameManager gameManager;
+    // Variables de estado del jugador
+    private bool isGrounded; // Indica si el jugador está en el suelo
+    private bool hasJumped;  // Indica si el jugador ha saltado recientemente
 
-    private int npcDestroyed = 0;
+    // Componentes de audio para efectos de sonido
+    public AudioSource jumpAudioSource;
+    public AudioSource landAudioSource;
+    public AudioSource moveAudioSource;
 
     void Start()
     {
+        // Inicialización de componentes y variables
         rb = GetComponent<Rigidbody>();
         rb.linearDamping = 5f;  // Ajuste del drag para reducir el deslizamiento
         animatorPlayer = GetComponent<Animator>();
-
-        //gameManager = GameManager.Instance;
+        
+        hasJumped = false; // Inicialmente no ha saltado
+        isGrounded = true; // Se asume que empieza en el suelo
     }
 
     void FixedUpdate()
     {
-        // Movimiento de la esfera con velocidad en lugar de AddForce
+        // Capturar entrada del jugador
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
+        // Obtener las direcciones de la cámara para orientar el movimiento
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
-        forward.y = 0;
+        forward.y = 0; // Ignorar componente vertical
         right.y = 0;
         forward.Normalize();
         right.Normalize();
 
+        // Calcular la dirección de movimiento basada en la cámara
         Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
 
         // Aplicar velocidad directamente en el eje X y Z
@@ -47,31 +60,38 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
 
-        // Animación de movimiento
-        if (moveX != 0 || moveZ != 0)
+        // Control de animaciones del jugador
+        animatorPlayer.SetBool("walk", moveX != 0 || moveZ != 0);
+
+        // Si el jugador presiona espacio y está en el suelo, salta
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            animatorPlayer.SetBool("walk", true);
-        }
-        else
-        {
-            animatorPlayer.SetBool("walk", false);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+            hasJumped = true; // Registrar que ha saltado
+
+            // Reproducir sonido de salto si está asignado
+            if (jumpAudioSource != null)
+            {
+                jumpAudioSource.Play();
+            }
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("npc"))
+        if (collision.gameObject.CompareTag("Ground")) // Asegúrate de etiquetar el suelo como "Ground"
         {
-            npcDestroyed++;
-            Debug.Log("Npc destruido: " + npcDestroyed);
-
-            if (npcDestroyed == 2)
-            {
-                Debug.Log("You win");
-                //gameManager.GameOverWin();
-            }
+            isGrounded = true;
+            hasJumped = false;
         }
+    }
 
-
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }
