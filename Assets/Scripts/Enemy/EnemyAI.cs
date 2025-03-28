@@ -17,11 +17,15 @@ public class EnemyAI : MonoBehaviour
     private float lastAttackTime = 0f;
     private readonly List<string> validTags = new() { "objectSmall", "objectMedium", "objectBig" };
     private EnemyThrowManager throwManager;
+    private Animator animator;
 
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         throwManager = GetComponent<EnemyThrowManager>();
+        animator = GetComponent<Animator>();
+        Debug.Log(animator);
+
         enemyRb.isKinematic = false;
         enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         enemyRb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -47,6 +51,7 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 direction = (player.position - transform.position).normalized;
         enemyRb.linearVelocity = new Vector3(direction.x * speed, enemyRb.linearVelocity.y, direction.z * speed);
+        animator.SetBool("isRunning", true);
     }
 
     private void AttackPlayer()
@@ -57,18 +62,21 @@ public class EnemyAI : MonoBehaviour
             playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
             Debug.Log("Golpeando al jugador");
         }
+        animator.SetBool("isAttacking", true);
     }
+
 
     private void FindAndPickObject()
     {
         Collider[] objects = Physics.OverlapSphere(transform.position, objectDetectionRange, layerMask, QueryTriggerInteraction.UseGlobal);
-        
+
         foreach (Collider obj in objects)
         {
             if (!validTags.Contains(obj.tag)) continue;
             throwManager.PickUpObject(obj.gameObject);
             break;
         }
+       // animator.SetBool("trow", true);
     }
 }
 
