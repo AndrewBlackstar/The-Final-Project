@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.8160377, g: 0.9594041, b: 1, a: 1}
+    m_Value: {r: 0.9811321, g: 0.664771, b: 0.087931626, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -199,28 +199,28 @@ MonoBehaviour:
   active: 1
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 143
+    m_Value: 78
   redOutGreenIn:
     m_OverrideState: 1
-    m_Value: -120
+    m_Value: 17
   redOutBlueIn:
     m_OverrideState: 1
-    m_Value: 42
+    m_Value: -22
   greenOutRedIn:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -4
   greenOutGreenIn:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 117
   greenOutBlueIn:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -20
   blueOutRedIn:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 11
   blueOutGreenIn:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: -20
   blueOutBlueIn:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 170
