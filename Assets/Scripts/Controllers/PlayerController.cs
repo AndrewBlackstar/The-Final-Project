@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Control de animaciones del jugador
-        animatorPlayer.SetBool("walk", moveX != 0 || moveZ != 0);
+        animatorPlayer.SetBool("isWalking", moveX != 0 || moveZ != 0);
 
         // Si el jugador presiona espacio y está en el suelo, salta
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)

@@ -4,7 +4,7 @@ public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
     
-    private Vector3 offset = new Vector3(167.31f, 1.5f, 125f);
+    private Vector3 offset = new Vector3(40f, 2f, 61f);
     public float RotationSpeed = 200.0f;
     public float zoomSpeed = 2.0f;
     public float minZoom = 2f;
