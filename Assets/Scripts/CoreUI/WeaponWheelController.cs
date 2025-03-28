@@ -14,17 +14,20 @@ public class WeaponWheelController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Fire3"))
         {
             weaponWheeSelected = !weaponWheeSelected;
-            
+            Time.timeScale = weaponWheeSelected ? 0f : 1f;
+            anim.SetBool("OpenWeaponWheel", weaponWheeSelected);
         }
 
         if (weaponWheeSelected)
         {
-            
+            Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
+            Cursor.visible = true; // Hace visible el cursor
             anim.SetBool("OpenWeaponWheel", true);
         }
         else
         {
-            
+            Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor
+            Cursor.visible = false; // Oculta el cursor
             anim.SetBool("OpenWeaponWheel", false);
         }
 
@@ -47,3 +50,5 @@ public class WeaponWheelController : MonoBehaviour
 
     }
 }
+
+
