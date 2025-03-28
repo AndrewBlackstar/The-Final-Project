@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     public float objectDetectionRange = 10f;
     public LayerMask layerMask;
     private Rigidbody enemyRb;
+    //private NavMeshAgent agent;
+
     private float lastAttackTime = 0f;
     private readonly List<string> validTags = new() { "objectSmall", "objectMedium", "objectBig" };
     private EnemyThrowManager throwManager;
@@ -21,6 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        //agent = GetComponent<NavMeshAgent>();
         enemyRb = GetComponent<Rigidbody>();
         throwManager = GetComponent<EnemyThrowManager>();
         animator = GetComponent<Animator>();
@@ -76,7 +80,7 @@ public class EnemyAI : MonoBehaviour
             throwManager.PickUpObject(obj.gameObject);
             break;
         }
-       // animator.SetBool("trow", true);
+        // animator.SetBool("trow", true);
     }
 }
 
