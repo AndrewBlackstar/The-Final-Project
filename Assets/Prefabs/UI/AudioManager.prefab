@@ -185,6 +185,8 @@ MonoBehaviour:
     clip: {fileID: 0}
   - name: slap
     clip: {fileID: 0}
+  - name: slap
+    clip: {fileID: 0}
   musicSource: {fileID: 6643432572719690321}
   sfxSource: {fileID: 3976835864486282333}
 --- !u!1 &7753156407033592962
