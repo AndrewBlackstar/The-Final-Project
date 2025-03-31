@@ -71,28 +71,6 @@ public class MovementPlayer : MonoBehaviour
             animator.SetBool("isPistolIdle", false);
         }
 
-        // //  aca si  camina  y  ataca  fire1 no funciono funciono lo de arriba
-        // if (Input.GetButtonDown("Fire1") && moveDirection != Vector3.zero)
-        // {
-        //     animator.SetBool("isWalking", true);
-        //     animator.SetTrigger("isMeele");
-        // }
-        // else
-        // {
-        //     animator.SetBool("isWalking", false);
-        //     animator.SetBool("isMeele", false);
-        // }
-        // //Aca si corre y ataca fire1
-        // if (Input.GetButtonDown("Fire1") && Input.GetKey("left shift") && moveDirection != Vector3.zero)
-        // {
-        //     animator.SetBool("isRunning", true);
-        //     animator.SetTrigger("isMeele");
-        // }
-        // else
-        // {
-        //     animator.SetBool("isRunning", false);
-        //     animator.SetBool("isMeele", false);
-        // }
 
     }
         void FixedUpdate()
