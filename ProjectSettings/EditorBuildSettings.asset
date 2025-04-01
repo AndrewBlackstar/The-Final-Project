@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Demo_City_Player.unity
     guid: cf6afba4a366b474a87b02af3824295a
   - enabled: 1
-    path: Assets/Scenes/FirstLevelSceneLu.unity
+    path: Assets/Scenes/FirstLevelSceneFa.unity
     guid: 0c76238f4186749ae87cbf28c5cf3b8e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
