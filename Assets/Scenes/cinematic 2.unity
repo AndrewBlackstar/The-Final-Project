@@ -3649,8 +3649,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 769854214}
           m_TargetAssemblyTypeName: EndCinematicHandler, Assembly-CSharp
-          m_MethodName: LoadGameScene
-          m_Mode: 5
+          m_MethodName: EndCinematic
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3686,7 +3686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2574b6b7e6fd3d34c916655c38da3bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cinematicScene: Cinematic_Transformacion
+  cinematicScene: cinematic 2
 --- !u!4 &786546605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2974446577308565320, guid: ba725f44605a508468e72cc5ba1d102b, type: 3}

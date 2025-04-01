@@ -20,14 +20,8 @@ public class CinematicTrigger : MonoBehaviour
     {
         
         isCinematicPlaying = true;     
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         SceneManager.LoadSceneAsync(cinematicScene, LoadSceneMode.Additive);
-        
-
-        // Detener el movimiento del enemigo o cualquier comportamiento de gameplay
-        // Asegúrate de tener referencias a los componentes que deseas detener
-        // Por ejemplo:
-        // enemyNavMeshAgent.isStopped = true;
-        // enemyAnimator.enabled = false;
+       
     }
 }

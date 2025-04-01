@@ -20,25 +20,21 @@ public class GameManager : MonoBehaviour
         }
         
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
 
     public void GameWin()
     {
+        SceneManager.LoadScene("GameWin");
     }
 
-    public void gGameOver()
-    {
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }

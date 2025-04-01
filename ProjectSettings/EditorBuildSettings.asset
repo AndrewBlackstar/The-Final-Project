@@ -12,11 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/FlowSceneMenu/MainMenu.unity
     guid: e644e0568ad5a8d44b8c787f1ab7f8ee
   - enabled: 1
-    path: Assets/Scenes/Demo_City_Player.unity
-    guid: cf6afba4a366b474a87b02af3824295a
+    path: Assets/Scenes/cinematic 1.unity
+    guid: 4c32b7278392620418817c7f747621b3
   - enabled: 1
-    path: Assets/Scenes/FirstLevelSceneFa.unity
-    guid: 0c76238f4186749ae87cbf28c5cf3b8e
+    path: Assets/Scenes/FirstLevelSceneLu.unity
+    guid: 28c0e508c00727a42a1185a9d2057106
+  - enabled: 1
+    path: Assets/Scenes/cinematic 2.unity
+    guid: 52294d0f91443b34dab2d4734121cfdf
+  - enabled: 1
+    path: Assets/Scenes/GameCoreScenes/GameWin.unity
+    guid: 16bd09839e3c50741bd7aaf8db5c3c3d
+  - enabled: 1
+    path: Assets/Scenes/GameCoreScenes/GameOver.unity
+    guid: b78672ddcd6c7944795614bdecf4d94d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
