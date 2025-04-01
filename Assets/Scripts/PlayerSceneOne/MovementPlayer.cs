@@ -12,10 +12,27 @@ public class MovementPlayer : MonoBehaviour
     private Vector3 moveDirection;
     public bool isGrounded;
 
+    [Header("Select Weapons")]
+    [Header("Armas")]
+    public Transform weaponsParent;  // El objeto vacío que contiene las armas como hijos
+    [SerializeField]private GameObject[] weapons;  // Array para almacenar las armasF
+    
+
+
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>(); // Obtener el Animator adjunto
+
+        // Inicializar el array de armas
+        weapons = new GameObject[weaponsParent.childCount];
+
+        // Llenar el array con las armas, desactivándolas inicialmente
+        for (int i = 0; i < weaponsParent.childCount; i++)
+        {
+            weapons[i] = weaponsParent.GetChild(i).gameObject;
+            weapons[i].SetActive(false);  // Desactivar todas las armas al principio
+        }
 
     }
 
@@ -29,7 +46,7 @@ public class MovementPlayer : MonoBehaviour
         }
 
         // Agregado para animaciones Se llaman aqui para que se actualicen en cada frame.
-        //Aca  camina 
+        //Aca  camina
         if (!Input.GetKey("left shift") && moveDirection != Vector3.zero)
         {
             RotateTowardsMovement();
@@ -42,7 +59,7 @@ public class MovementPlayer : MonoBehaviour
             animator.SetBool("isRunning", true);
             moveSpeed = 7f;
         }
-        //si no se esta moviendo 
+        //si no se esta moviendo
         else if (moveDirection == Vector3.zero)
         {
             animator.SetBool("isWalking", false);
@@ -73,10 +90,10 @@ public class MovementPlayer : MonoBehaviour
 
 
     }
-        void FixedUpdate()
-        {
-            ApplyPhysicsMovement();
-        }
+    void FixedUpdate()
+    {
+        ApplyPhysicsMovement();
+    }
 
 
     private void HandleInput()
@@ -100,8 +117,8 @@ public class MovementPlayer : MonoBehaviour
     }
     private void ApplyJump()
     {
-        //Usamos método AddForce en Rigidbodycpara aplicar una fuerza vertical con modo de Impulso
         playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
     }
 
     //Esto nos comunica cuando colisiona con un objeto que tenga Tag "Floor"
