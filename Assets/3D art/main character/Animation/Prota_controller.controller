@@ -91,6 +91,7 @@ AnimatorState:
   - {fileID: 2229236344166270101}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: -1834167272825691088}
   - {fileID: 5972757873269119843}
 =======
@@ -101,6 +102,10 @@ AnimatorState:
   - {fileID: -1834167272825691088}
   - {fileID: 5972757873269119843}
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+  - {fileID: -2965819063204263189}
+  - {fileID: -8550434378751033331}
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -118,8 +123,11 @@ AnimatorState:
   m_TimeParameter: 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1101 &-7113249548829457236
 =======
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &-6316803885028153574
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
@@ -135,8 +143,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ConditionEvent: isJumping
 =======
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_ConditionEvent: isMeele
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -188,10 +199,13 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isMeele
+<<<<<<< HEAD
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
     m_ConditionEvent: isJumping
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4539061706141469713}
@@ -203,10 +217,15 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
   m_ExitTime: 0
   m_HasExitTime: 0
+=======
+  m_ExitTime: 0.8958333
+  m_HasExitTime: 1
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
   m_ExitTime: 0.8958333
   m_HasExitTime: 1
@@ -260,10 +279,13 @@ AnimatorState:
   - {fileID: -6316803885028153574}
   - {fileID: 8075536377266337220}
   - {fileID: -6112072953351038238}
+<<<<<<< HEAD
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
   m_Transitions: []
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -318,6 +340,7 @@ AnimatorState:
   m_Transitions:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 5399563196421141716}
   - {fileID: -954859194631248331}
 =======
@@ -328,6 +351,10 @@ AnimatorState:
   - {fileID: 5399563196421141716}
   - {fileID: -954859194631248331}
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+  - {fileID: 2343409678691749117}
+  - {fileID: 253696675960842853}
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -396,9 +423,12 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+<<<<<<< HEAD
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1102 &-2915486652667065794
 AnimatorState:
   serializedVersion: 6
@@ -439,6 +469,7 @@ AnimatorState:
   - {fileID: 4580897354050228578}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 8217220824429781586}
 =======
   - {fileID: -4532988229264571765}
@@ -447,6 +478,10 @@ AnimatorState:
 =======
   - {fileID: 8217220824429781586}
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+  - {fileID: -4532988229264571765}
+  - {fileID: -1711880122100232277}
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -464,6 +499,7 @@ AnimatorState:
   m_TimeParameter: 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1101 &-1834167272825691088
 =======
 --- !u!1101 &-1711880122100232277
@@ -471,6 +507,9 @@ AnimatorState:
 =======
 --- !u!1101 &-1834167272825691088
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+--- !u!1101 &-1711880122100232277
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,6 +518,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -496,6 +536,12 @@ AnimatorStateTransition:
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+    m_ConditionEvent: isPistolIdle
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -5634297594043191437}
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -537,9 +583,12 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.97
+<<<<<<< HEAD
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -586,7 +635,11 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - m_Name: isRunning
+=======
+  - m_Name: isMeele
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
   - m_Name: isMeele
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
@@ -616,7 +669,10 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &253696675960842853
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -661,6 +717,7 @@ AnimatorStateMachine:
     m_State: {fileID: 763151925095370212}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
     m_Position: {x: 160, y: 290, z: 0}
@@ -682,6 +739,15 @@ AnimatorStateMachine:
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+    m_Position: {x: 980, y: 50, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 4687791442906711452}
+    m_Position: {x: -100, y: -80, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 3789584418584728105}
+    m_Position: {x: 300, y: -170, z: 0}
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   - serializedVersion: 1
     m_State: {fileID: -4548534338047252556}
     m_Position: {x: 660, y: -170, z: 0}
@@ -692,6 +758,7 @@ AnimatorStateMachine:
     m_State: {fileID: -4539061706141469713}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Position: {x: 490, y: 20, z: 0}
 =======
     m_Position: {x: 590, y: -10, z: 0}
@@ -699,11 +766,15 @@ AnimatorStateMachine:
 =======
     m_Position: {x: 490, y: 20, z: 0}
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+    m_Position: {x: 590, y: -10, z: 0}
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   - serializedVersion: 1
     m_State: {fileID: -5123721712968313997}
     m_Position: {x: 290, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7993020627545412090}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_Position: {x: 490, y: 100, z: 0}
@@ -713,11 +784,15 @@ AnimatorStateMachine:
 =======
     m_Position: {x: 490, y: 100, z: 0}
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+    m_Position: {x: 470, y: 100, z: 0}
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   - serializedVersion: 1
     m_State: {fileID: -2915486652667065794}
     m_Position: {x: -210, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8913690312654132761}
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Position: {x: 250, y: -120, z: 0}
   - serializedVersion: 1
@@ -731,13 +806,18 @@ AnimatorStateMachine:
     m_Position: {x: 490, y: -50, z: 0}
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_Position: {x: 40, y: -170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5634297594043191437}
     m_Position: {x: 40, y: -20, z: 0}
+<<<<<<< HEAD
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -774,6 +854,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -837,6 +918,8 @@ AnimatorState:
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &2229236344166270101
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -864,7 +947,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &2343409678691749117
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -904,6 +990,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Transitions:
   - {fileID: 5212084646471040231}
 <<<<<<< HEAD
@@ -912,6 +999,9 @@ AnimatorState:
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+  m_Transitions: []
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -980,6 +1070,7 @@ AnimatorState:
   m_TimeParameter: 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1101 &5212084646471040231
 =======
 --- !u!1101 &8075536377266337220
@@ -987,6 +1078,9 @@ AnimatorState:
 =======
 --- !u!1101 &5212084646471040231
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+--- !u!1101 &8075536377266337220
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -995,6 +1089,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_ConditionEvent: isJumping
     m_EventTreshold: 0
@@ -1054,6 +1149,9 @@ AnimatorStateTransition:
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 =======
 >>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
+=======
+    m_ConditionEvent: isMeele
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7993020627545412090}
@@ -1063,6 +1161,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -1171,6 +1270,8 @@ AnimatorStateTransition:
   m_HasExitTime: 0
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_ExitTime: 0.8958333
   m_HasExitTime: 1
 >>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
