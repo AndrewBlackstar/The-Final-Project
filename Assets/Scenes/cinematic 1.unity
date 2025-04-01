@@ -2138,8 +2138,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354191279}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.101233184, y: 0.82736146, z: 0.15509209, w: 0.530256}
-  m_LocalPosition: {x: -1954.564, y: 0.78, z: 44.176}
+  m_LocalRotation: {x: 0.0014343865, y: 0.6710986, z: -0.009597305, w: 0.7413046}
+  m_LocalPosition: {x: 4.6, y: 14.6, z: 59.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4872,6 +4872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2574b6b7e6fd3d34c916655c38da3bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinematicScene: Cinematic_Transformacion
 --- !u!114 &769854212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4900,7 +4901,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: FirstLevelSceneLu
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
