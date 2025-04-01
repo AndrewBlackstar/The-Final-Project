@@ -248,8 +248,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+      - m_Target: {fileID: 1679520427}
+        m_TargetAssemblyTypeName: UiMenuControl, Assembly-CSharp
         m_MethodName: SetMute
         m_Mode: 1
         m_Arguments:
@@ -1271,8 +1271,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+      - m_Target: {fileID: 1679520427}
+        m_TargetAssemblyTypeName: UiMenuControl, Assembly-CSharp
         m_MethodName: SetSfxVolume
         m_Mode: 1
         m_Arguments:
@@ -1753,6 +1753,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5335535036866525332, guid: 0896372008f384d4b85707597b5a7d83, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 3ac698342c72dee4b9410861e35d65f8, type: 2}
+    - target: {fileID: 5335535036866525332, guid: 0896372008f384d4b85707597b5a7d83, type: 3}
+      propertyPath: musicSound.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f7905da9a278f44e91774220aed5827, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4245,8 +4253,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+      - m_Target: {fileID: 1679520427}
+        m_TargetAssemblyTypeName: UiMenuControl, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
         m_Arguments:

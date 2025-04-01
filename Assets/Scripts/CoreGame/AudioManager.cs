@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
     public Sounds[] musicSound, SfxSound;
     public AudioSource musicSource, sfxSource;
+    public AudioMixer mixer;
 
 
     private void Awake()
@@ -15,15 +16,20 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
 
     }
 
     private void Start()
     {
-        float volume = PlayerPrefs.GetFloat("Volume", 1f); // Si no hay valor guardado, usa 1
-        musicSource.volume = volume;
+        float volume = PlayerPrefs.GetFloat("musicVolume", 1f);
+        mixer.SetFloat("Music", Mathf.Log10(volume) * 20);
+        mixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
         PlayMusic("BGMusic");
     }
 

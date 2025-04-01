@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSound:
   - name: BGMusic
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2f7905da9a278f44e91774220aed5827, type: 3}
   SfxSound:
   - name: shot
     clip: {fileID: 0}
@@ -189,6 +189,7 @@ MonoBehaviour:
     clip: {fileID: 0}
   musicSource: {fileID: 6643432572719690321}
   sfxSource: {fileID: 3976835864486282333}
+  mixer: {fileID: 24100000, guid: 3ac698342c72dee4b9410861e35d65f8, type: 2}
 --- !u!1 &7753156407033592962
 GameObject:
   m_ObjectHideFlags: 0

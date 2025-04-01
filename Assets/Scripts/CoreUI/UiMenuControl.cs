@@ -13,30 +13,22 @@ public class UiMenuControl : MonoBehaviour
 
     void Start()
     {
-     
+        Debug.Log("Cargando música: " + PlayerPrefs.GetFloat("musicVolume", 1f));
+        Debug.Log("Cargando SFX: " + PlayerPrefs.GetFloat("sfxVolume", 1f));
 
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 1f);
+        // Cargar estado de muteo
         if (PlayerPrefs.HasKey("Muted"))
         {
             muteToggle.isOn = PlayerPrefs.GetInt("Muted") == 1;
             SetMute();
         }
 
-        if (PlayerPrefs.HasKey("musicVolume") && PlayerPrefs.HasKey("sfxVolume"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-            SetSfxVolume();
-        }
-
-
-    }
-
-    void Update()
-    {
         
+
+        SetMusicVolume();
+        SetSfxVolume();
     }
 
     public void LoadScene(string name)
@@ -48,15 +40,19 @@ public class UiMenuControl : MonoBehaviour
     public void SetMusicVolume()
     {
         float musicVolume = musicSlider.value;
-        audioMixer.SetFloat("Music", MathF.Log10(musicVolume) * 20);
-        PlayerPrefs.SetFloat("Music", musicVolume);
-
+        audioMixer.SetFloat("Music", Mathf.Log10(musicVolume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.Save();
+        Debug.Log("Música guardada: " + PlayerPrefs.GetFloat("musicVolume")); // Verifica que se guarda
     }
 
     public void SetSfxVolume()
     {
         float sfxVolume = sfxSlider.value;
-        audioMixer.SetFloat("sfx", MathF.Log10(sfxVolume) * 20);
+        audioMixer.SetFloat("sfx", Mathf.Log10(sfxVolume) * 20);
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        PlayerPrefs.Save();
+        Debug.Log("SFX guardado: " + PlayerPrefs.GetFloat("sfxVolume")); // Verifica que se guarda
     }
 
     public void SetMute()
@@ -65,7 +61,7 @@ public class UiMenuControl : MonoBehaviour
         {
             audioMixer.SetFloat("Music", -80f);
             audioMixer.SetFloat("sfx", -80f);
-            PlayerPrefs.SetInt("Muted", 1); // Guardamos el estado de mute
+            PlayerPrefs.SetInt("Muted", 1);
         }
         else
         {
@@ -73,13 +69,6 @@ public class UiMenuControl : MonoBehaviour
             SetSfxVolume();
             PlayerPrefs.SetInt("Muted", 0);
         }
-    }
-
-    public void LoadVolume()
-    {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-        SetMusicVolume();
-        SetSfxVolume();
+        PlayerPrefs.Save();
     }
 }
