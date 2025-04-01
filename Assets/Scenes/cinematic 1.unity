@@ -2138,8 +2138,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354191279}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0014343846, y: 0.6710986, z: -0.009597289, w: 0.74130464}
-  m_LocalPosition: {x: 4.6, y: 14.6, z: 59.8}
+  m_LocalRotation: {x: -0.101233184, y: 0.82736146, z: 0.15509209, w: 0.530256}
+  m_LocalPosition: {x: -1954.564, y: 0.78, z: 44.176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4894,7 +4894,7 @@ MonoBehaviour:
         - m_Target: {fileID: 769854211}
           m_TargetAssemblyTypeName: EndCinematicHandler, Assembly-CSharp
           m_MethodName: LoadGameScene
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
