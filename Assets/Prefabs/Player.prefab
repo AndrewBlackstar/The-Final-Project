@@ -1074,7 +1074,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.537, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7859193948597576993}
@@ -1115,7 +1115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4facc2eb1c225784b8efffb137f90859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 1
+  moveForce: 4
+  jumpForce: 250
+  runMultiplier: 8
   cameraTransform: {fileID: 0}
 --- !u!54 &5554441158108463849
 Rigidbody:
@@ -1125,7 +1127,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3228291196896063000}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 75
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1164,9 +1166,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.11930084
-  m_Height: 1.1808548
+  m_Height: 1.1838588
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5904329, z: -0.028968811}
+  m_Center: {x: 0, y: 0.588931, z: -0.028968811}
 --- !u!1 &3482338722901240574
 GameObject:
   m_ObjectHideFlags: 0
