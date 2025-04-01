@@ -1,85 +1,74 @@
 using UnityEngine;
-using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class EnemyBase : MonoBehaviour
 {
-    [Header("Settings")]
-    public float speed = 3.5f;
+    [Header("Player Settings")]
+    public Transform player;
     public float attackRange = 2f;
+    public float detectionRange = 15f;
     public float pushForce = 5f;
     public float attackCooldown = 1f;
-    public float detectionRange = 15f;
+    private float speed = 10f;
 
-    protected NavMeshAgent agent;  // ✅ Cambiamos Rigidbody por NavMeshAgent
-    protected Transform player;
-    protected Animator animator;
-    protected float lastAttackTime = 0f;
+    private Rigidbody enemyRb;
+    private float lastAttackTime = 0f;
+    private Animator animator;
 
-    protected virtual void Start()
+    void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        enemyRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
-        agent.speed = speed;
-        agent.stoppingDistance = attackRange - 0.5f;
+        enemyRb.isKinematic = false;
+        enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        enemyRb.constraints = RigidbodyConstraints.FreezeRotation;
+    }
 
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
+    void Update()
+    {
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance <= detectionRange) // Solo se mueve si el jugador está dentro del rango de detección
         {
-            player = playerObject.transform;
+            if (distance > attackRange)
+            {
+                MoveTowardsPlayer();
+            }
+            else
+            {
+                // Realizar el ataque mientras el tiempo actual es mayor al tiempo de cooldown
+                if (Time.time >= lastAttackTime + attackCooldown)
+                {
+                    lastAttackTime = Time.time;
+                    AttackPlayer();
+                }
+            }
         }
         else
         {
-            Debug.LogError("No se encontró el jugador en la escena. ");
+            animator.SetBool("isRunning", false);
         }
     }
 
-    protected virtual void Update()
+    private void MoveTowardsPlayer()
     {
-        if (player == null) return;
+        Vector3 direction = (player.position - transform.position).normalized;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        // Aplica movimiento 
+        enemyRb.linearVelocity = new Vector3(direction.x * speed, enemyRb.linearVelocity.y, direction.z * speed);
 
-        if (distance > attackRange && distance <= detectionRange)
+        // Hacer que el enemigo gire hacia el jugador
+        if (direction != Vector3.zero)
         {
-            MoveTowardsPlayer();
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
-        else if (distance <= attackRange && Time.time >= lastAttackTime + attackCooldown)
-        {
-            AttackPlayer();
-            lastAttackTime = Time.time;
-        }
+
+        animator.SetBool("isRunning", true);
     }
 
-    protected void MoveTowardsPlayer()
-    {
-        /* if (agent.isStopped) agent.isStopped = false;
-
-         Debug.Log("Intentando mover al enemigo hacia " + player.position);
-
-         agent.SetDestination(player.position);
-
-         if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
-         {
-             Debug.LogError("El camino es inválido. ¿Está el enemigo en el NavMesh?");
-         }
-
-         if (agent.velocity.magnitude > 0.1f)
-         {
-             animator?.SetBool("isRunning", true);
-         }
-         else
-         {
-             animator?.SetBool("isRunning", false);
-             Debug.Log("El enemigo no se está moviendo. Velocidad actual: " + agent.velocity.magnitude);
-         }*/
-        if (agent == null || player == null) return;
-
-        agent.SetDestination(player.position);
-        Debug.Log("Moviendo al enemigo hacia: " + player.position);
-    }
-
-    protected virtual void AttackPlayer()
+    private void AttackPlayer()
     {
         if (player.TryGetComponent(out Rigidbody playerRb))
         {
@@ -88,7 +77,6 @@ public class EnemyBase : MonoBehaviour
             Debug.Log("Golpeando al jugador");
         }
 
-        animator?.SetBool("isAttacking", true);
-        agent.isStopped = true;  // ✅ Detener movimiento mientras ataca
+        animator.SetBool("isAttacking", true);
     }
 }

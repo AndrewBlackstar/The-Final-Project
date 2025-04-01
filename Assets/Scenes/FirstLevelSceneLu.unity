@@ -451,6 +451,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7160919164016092737, guid: 946acd58c95ba4e9f93e14916d5c2d44, type: 3}
       insertIndex: -1
       addedObject: {fileID: 84491363}
+    - targetCorrespondingSourceObject: {fileID: 7160919164016092737, guid: 946acd58c95ba4e9f93e14916d5c2d44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 84491364}
+    - targetCorrespondingSourceObject: {fileID: 7160919164016092737, guid: 946acd58c95ba4e9f93e14916d5c2d44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 84491365}
   m_SourcePrefab: {fileID: 100100000, guid: 946acd58c95ba4e9f93e14916d5c2d44, type: 3}
 --- !u!1001 &45319048
 PrefabInstance:
@@ -635,7 +641,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84491358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f18364a49dfc427b86fa7f9b0cebc77, type: 3}
   m_Name: 
@@ -645,6 +651,7 @@ MonoBehaviour:
   pushForce: 5
   attackCooldown: 1
   detectionRange: 15
+  player: {fileID: 1949259220}
 --- !u!195 &84491360
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -712,6 +719,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &84491364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84491358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e073858280eba466baca277181f56146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1949259220}
+  speed: 3
+  attackRange: 2
+  pushForce: 5
+  attackCooldown: 1
+  objectDetectionRange: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!54 &84491365
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84491358}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &86465470
 PrefabInstance:
   m_ObjectHideFlags: 0
