@@ -248,7 +248,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1679520427}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: SetMute
         m_Mode: 1
@@ -1271,7 +1271,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1679520427}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: SetSfxVolume
         m_Mode: 1
@@ -3558,10 +3558,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679520421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e1200c0664e654481dad585424a076, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e72c2984e0281e46bc415602352159f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 1537338710}
   audioMixer: {fileID: 24100000, guid: 3ac698342c72dee4b9410861e35d65f8, type: 2}
   musicSlider: {fileID: 1969814034}
   sfxSlider: {fileID: 675603232}
@@ -4246,7 +4245,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1679520427}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
