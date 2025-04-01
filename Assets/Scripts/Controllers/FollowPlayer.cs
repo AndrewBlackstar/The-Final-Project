@@ -4,7 +4,7 @@ public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
     
-    private Vector3 offset = new Vector3(40f, 2f, 61f);
+    private Vector3 offset = new Vector3(0f, 7f, -9f);
     public float RotationSpeed = 200.0f;
     public float zoomSpeed = 2.0f;
     public float minZoom = 2f;
@@ -21,6 +21,8 @@ public class FollowPlayer : MonoBehaviour
     private float hudTimer = 0f;
     public float hudDisplayTime = 2f;
 
+    public Vector3 rotationOffset = new Vector3(0, 10, 0); // Ajuste de rotación adicional
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,8 +36,6 @@ public class FollowPlayer : MonoBehaviour
         {
             isFirstPerson = !isFirstPerson;
             hudTimer = hudDisplayTime;
-
-            // Activar o desactivar el cuerpo del jugador en primera persona
             if (player != null)
             {
                 player.SetActive(!isFirstPerson);
@@ -47,7 +47,6 @@ public class FollowPlayer : MonoBehaviour
     {
         if (isFirstPerson)
         {
-            // Primera persona: cámara fija sin suavizado
             Vector3 headPosition = player.transform.position + firstPersonOffset;
             transform.position = headPosition;
 
@@ -56,7 +55,6 @@ public class FollowPlayer : MonoBehaviour
 
             yaw += mouseX;
             pitch -= mouseY;
-            //pitch = Mathf.Clamp(pitch, -80f, 80f);
 
             transform.rotation = Quaternion.Euler(pitch, yaw, 0);
         }
@@ -66,16 +64,19 @@ public class FollowPlayer : MonoBehaviour
             float mouseY = Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime;
 
             yaw += mouseX;
-            pitch += mouseY;
+            pitch -= mouseY; // Se invierte el eje Y para un control más natural
             pitch = Mathf.Clamp(pitch, -100f, 10f);
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             targetZoom -= scroll * zoomSpeed;
             targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
             float smoothZoom = Mathf.Lerp(offset.magnitude, targetZoom, Time.deltaTime * zoomSmoothSpeed);
-            offset = offset.normalized * smoothZoom;
+            
+            // Mantener las proporciones del offset al hacer zoom
+            offset *= smoothZoom / offset.magnitude;
 
-            Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0);
+            Quaternion rotationOffsetQuat = Quaternion.Euler(rotationOffset);
+            Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0) * rotationOffsetQuat;
             Vector3 rotatedOffset = targetRotation * offset;
             Vector3 desiredPosition = player.transform.position + rotatedOffset;
 
@@ -99,7 +100,6 @@ public class FollowPlayer : MonoBehaviour
             style.fontStyle = FontStyle.Bold;
 
             string modeText = isFirstPerson ? "First Person Mode" : "Third Person Mode";
-
             GUI.Label(new Rect(10, 10, 300, 30), modeText, style);
         }
     }

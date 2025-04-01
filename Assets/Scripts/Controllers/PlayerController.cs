@@ -1,97 +1,163 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+
 
 public class PlayerController : MonoBehaviour
 {
-    // Variables públicas para ajustar las fuerzas de movimiento y salto
-    public float moveForce = 10f;  // Fuerza de movimiento
-    public float jumpForce = 10.0f;  // Fuerza de salto
+    public float moveForce = 2f;
+    public float jumpForce = 200f;
+    public float runMultiplier = 4f; // Factor de velocidad al correr
 
-    // Referencias a otros componentes y objetos en la escena
-    public Transform cameraTransform;  // Cámara para orientar el movimiento
-    private Rigidbody rb;  // Componente Rigidbody de la esfera
-    private Animator animatorPlayer;  // Animator del jugador
+    public Transform cameraTransform;
+    private Rigidbody rb;
+    private Animator animatorPlayer;
 
-    // Variables de estado del jugador
-    private bool isGrounded; // Indica si el jugador está en el suelo
-    private bool hasJumped;  // Indica si el jugador ha saltado recientemente
+    private bool isGrounded;
+    private bool hasJumped;
+    private bool isRunning;
 
-    // Componentes de audio para efectos de sonido
-    public AudioSource jumpAudioSource;
-    public AudioSource landAudioSource;
-    public AudioSource moveAudioSource;
+    private void Awake()
+    {
+        if (cameraTransform == null)
+        {
+            cameraTransform = Camera.main.transform;
+        }
+    }
 
     void Start()
     {
-        // Inicialización de componentes y variables
         rb = GetComponent<Rigidbody>();
-        rb.linearDamping = 5f;  // Ajuste del drag para reducir el deslizamiento
+        rb.linearDamping = 5f; // Damping para suavizar el movimiento
+        rb.angularDamping = 5f; // Damping para suavizar la rotación
         animatorPlayer = GetComponent<Animator>();
         
-        hasJumped = false; // Inicialmente no ha saltado
-        isGrounded = true; // Se asume que empieza en el suelo
+        hasJumped = false;
+        isGrounded = true;
+        isRunning = false;
     }
 
     void FixedUpdate()
+{
+    float moveX = Input.GetAxis("Horizontal");
+    float moveZ = Input.GetAxis("Vertical");
+
+    Vector3 forward = cameraTransform.forward;
+    Vector3 right = cameraTransform.right;
+    forward.y = 0;
+    right.y = 0;
+    forward.Normalize();
+    right.Normalize();
+
+    Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
+
+    if (Input.GetKey(KeyCode.R))
     {
-        // Capturar entrada del jugador
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        Run(moveDirection);
+    }
+    else
+    {
+        Move(moveDirection);
+    }
+    
+    if (moveDirection.magnitude > 0.1f)
+    {
+        Rotation(moveDirection);
+    }               
 
-        // Obtener las direcciones de la cámara para orientar el movimiento
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
-        forward.y = 0; // Ignorar componente vertical
-        right.y = 0;
-        forward.Normalize();
-        right.Normalize();
+    // Salto normal cuando NO está corriendo
+    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRunning)
+    {            
+        NormalJump();
+    }
 
-        // Calcular la dirección de movimiento basada en la cámara
-        Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
+    // Salto de carrera cuando está corriendo
+    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && isRunning)
+    {
+        RunJump();
+    }
+}
 
-        // Aplicar velocidad directamente en el eje X y Z
-        rb.linearVelocity = new Vector3(moveDirection.x * moveForce, rb.linearVelocity.y, moveDirection.z * moveForce);
 
-        // Si hay movimiento, rotar el jugador hacia la dirección de movimiento
-        if (moveDirection.magnitude > 0.1f)
+    // Caminar
+    private void Move(Vector3 direction)
+    {
+        isRunning = false;
+        rb.linearVelocity = new Vector3(direction.x * moveForce, rb.linearVelocity.y, direction.z * moveForce);
+
+        if (animatorPlayer != null)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-        }
-
-        // Control de animaciones del jugador
-        animatorPlayer.SetBool("isWalking", moveX != 0 || moveZ != 0);
-
-        // Si el jugador presiona espacio y está en el suelo, salta
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
-            hasJumped = true; // Registrar que ha saltado
-
-            // Reproducir sonido de salto si está asignado
-            if (jumpAudioSource != null)
-            {
-                jumpAudioSource.Play();
-            }
+            animatorPlayer.SetBool("isRunning", false); // <-- Desactiva la animación de correr
+            animatorPlayer.SetBool("isWalking", direction.magnitude > 0.1f); // <-- Activa la animación de caminar
         }
     }
 
+    // Rotar el personaje
+    private void Rotation(Vector3 direction)
+    {       
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);        
+    }
+    
+    // Correr
+    private void Run(Vector3 direction)
+    {
+        isRunning = true;
+        rb.linearVelocity = new Vector3(direction.x * moveForce * runMultiplier, rb.linearVelocity.y, direction.z * moveForce * runMultiplier);
+
+        if (animatorPlayer != null)
+        {
+            animatorPlayer.SetBool("isRunning", true);
+        }
+
+        
+    }
+
+    // Salto normal
+private void NormalJump()
+{
+    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    isGrounded = false;
+    hasJumped = true;
+
+    if (animatorPlayer != null)
+    {
+        animatorPlayer.SetBool("isJumping", true);
+    }
+}
+
+// Salto cuando corre (puede ser más largo o más alto si quieres)
+private void RunJump()
+{
+    rb.AddForce(Vector3.up * (jumpForce * 1.2f), ForceMode.Impulse); // Aumenta la fuerza del salto si está corriendo
+    isGrounded = false;
+    hasJumped = true;
+
+    if (animatorPlayer != null)
+    {
+        animatorPlayer.SetBool("isJumping", true);
+    }
+}
+
+    // Verifica si el jugador está en el suelo   
+    
     private void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Ground"))
     {
-        if (collision.gameObject.CompareTag("Ground")) // Asegúrate de etiquetar el suelo como "Ground"
-        {
-            isGrounded = true;
-            hasJumped = false;
-        }
-    }
+        isGrounded = true;
+        hasJumped = false;
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (animatorPlayer != null)
         {
-            isGrounded = false;
+            animatorPlayer.SetBool("isJumping", false);
         }
     }
+}
+
+private void OnCollisionStay(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Ground"))
+    {
+        isGrounded = true;
+    }
+}
 }

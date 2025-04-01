@@ -8,6 +8,7 @@ TagManager:
   - objectMedium
   - objectBig
   - Floor
+  - Ground
   layers:
   - Default
   - TransparentFX
