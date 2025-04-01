@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 157.41
+      value: 37.964066
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08109385
+      value: 0.665
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.23
+      value: 60.2782
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a885c73f5103cc14081f70f0278024d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -168,10 +168,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.37047195
-  m_Height: 1.7653971
+  m_Radius: 0.37047198
+  m_Height: 1.4874353
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5532317, z: -0.12952805}
+  m_Center: {x: 6.434782e-17, y: 0.6922126, z: -0.12952805}
 --- !u!54 &6918773058452472597
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -239,8 +239,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0.2
+  m_Height: 1.32
+  m_BaseOffset: -0.02
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7959860364301165301

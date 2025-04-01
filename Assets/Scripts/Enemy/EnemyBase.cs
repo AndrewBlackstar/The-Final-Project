@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
     public float detectionRange = 15f;
     public float pushForce = 5f;
     public float attackCooldown = 1f;
-    private float speed = 10f;
+    private float speed = 5f;
 
     private Rigidbody enemyRb;
     private float lastAttackTime = 0f;
