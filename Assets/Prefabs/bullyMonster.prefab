@@ -2059,6 +2059,7 @@ GameObject:
   - component: {fileID: 8924754190962500884}
   - component: {fileID: 3649700475117996636}
   - component: {fileID: 6973442138756836004}
+  - component: {fileID: 4029196911001016190}
   m_Layer: 0
   m_Name: bullyMonster
   m_TagString: Untagged
@@ -2076,7 +2077,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.7678764, y: 0, z: 0.153}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 34024844392035973}
@@ -2168,7 +2169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 3
+  speed: 10
   attackRange: 2
   pushForce: 5
   attackCooldown: 1
@@ -2190,6 +2191,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPosition: {fileID: 65199563562572228}
   throwForce: 15
+--- !u!195 &4029196911001016190
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083342864700507961}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.57
+  m_Speed: 10
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: -0.1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5111764478202350226
 GameObject:
   m_ObjectHideFlags: 0
