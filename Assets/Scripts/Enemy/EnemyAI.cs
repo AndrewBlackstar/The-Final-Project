@@ -28,8 +28,7 @@ public class EnemyAI : MonoBehaviour
         enemyRb = GetComponent<Rigidbody>();
         throwManager = GetComponent<EnemyThrowManager>();
         animator = GetComponent<Animator>();
-        Debug.Log(animator);
-
+        
         enemyRb.isKinematic = false;
         enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         enemyRb.constraints = RigidbodyConstraints.FreezeRotation;

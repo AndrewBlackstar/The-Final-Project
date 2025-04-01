@@ -89,23 +89,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2229236344166270101}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - {fileID: -1834167272825691088}
-  - {fileID: 5972757873269119843}
-=======
   - {fileID: -2965819063204263189}
   - {fileID: -8550434378751033331}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-  - {fileID: -1834167272825691088}
-  - {fileID: 5972757873269119843}
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-  - {fileID: -2965819063204263189}
-  - {fileID: -8550434378751033331}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -121,18 +106,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!1101 &-7113249548829457236
-=======
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &-6316803885028153574
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
---- !u!1101 &-7113249548829457236
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,13 +115,6 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_ConditionEvent: isJumping
-=======
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_ConditionEvent: isMeele
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -199,13 +166,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isMeele
-<<<<<<< HEAD
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-    m_ConditionEvent: isJumping
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4539061706141469713}
@@ -213,23 +173,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.09722223
+  m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-  m_ExitTime: 0
-  m_HasExitTime: 0
-=======
   m_ExitTime: 0.8958333
   m_HasExitTime: 1
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-  m_ExitTime: 0.8958333
-  m_HasExitTime: 1
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -271,21 +218,10 @@ AnimatorState:
   m_Name: Meele
   m_Speed: 1
   m_CycleOffset: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_Transitions: []
-=======
   m_Transitions:
   - {fileID: -6316803885028153574}
   - {fileID: 8075536377266337220}
   - {fileID: -6112072953351038238}
-<<<<<<< HEAD
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-  m_Transitions: []
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -338,23 +274,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - {fileID: 5399563196421141716}
-  - {fileID: -954859194631248331}
-=======
   - {fileID: 2343409678691749117}
   - {fileID: 253696675960842853}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-  - {fileID: 5399563196421141716}
-  - {fileID: -954859194631248331}
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-  - {fileID: 2343409678691749117}
-  - {fileID: 253696675960842853}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -370,9 +291,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 --- !u!1101 &-4532988229264571765
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -423,12 +341,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
-<<<<<<< HEAD
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1102 &-2915486652667065794
 AnimatorState:
   serializedVersion: 6
@@ -467,21 +379,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4580897354050228578}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - {fileID: 8217220824429781586}
-=======
   - {fileID: -4532988229264571765}
   - {fileID: -1711880122100232277}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-  - {fileID: 8217220824429781586}
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-  - {fileID: -4532988229264571765}
-  - {fileID: -1711880122100232277}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -497,19 +396,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!1101 &-1834167272825691088
-=======
 --- !u!1101 &-1711880122100232277
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
---- !u!1101 &-1834167272825691088
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
---- !u!1101 &-1711880122100232277
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -518,77 +405,17 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-    m_ConditionEvent: isJumping
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1503093200934564925}
-<<<<<<< HEAD
-=======
     m_ConditionEvent: isPistolIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5634297594043191437}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-    m_ConditionEvent: isPistolIdle
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -5634297594043191437}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-  m_TransitionDuration: 0.10519929
-  m_TransitionOffset: 0.24739571
-  m_ExitTime: 0.015945155
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &-954859194631248331
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isJumping
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1514009757083221602}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.15161024
-  m_TransitionOffset: 0.18392383
-  m_ExitTime: 0.021929804
-<<<<<<< HEAD
-=======
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.97
-<<<<<<< HEAD
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -603,26 +430,7 @@ AnimatorController:
   m_Name: Prota_controller
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isIdle
-<<<<<<< HEAD
-=======
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: isWalking
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-<<<<<<< HEAD
-  - m_Name: isWalking
-=======
-  - m_Name: isJumping
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -634,15 +442,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - m_Name: isRunning
-=======
   - m_Name: isMeele
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-  - m_Name: isMeele
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -667,12 +467,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &253696675960842853
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -698,9 +492,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
 --- !u!1107 &564566006991274208
 AnimatorStateMachine:
   serializedVersion: 6
@@ -712,23 +503,9 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2684569135274890879}
-    m_Position: {x: 230, y: 100, z: 0}
+    m_Position: {x: 220, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 763151925095370212}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-    m_Position: {x: 160, y: 290, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 4687791442906711452}
-    m_Position: {x: 80, y: -50, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3789584418584728105}
-    m_Position: {x: 230, y: 30, z: 0}
-<<<<<<< HEAD
-=======
     m_Position: {x: 980, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4687791442906711452}
@@ -736,18 +513,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 3789584418584728105}
     m_Position: {x: 300, y: -170, z: 0}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-    m_Position: {x: 980, y: 50, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 4687791442906711452}
-    m_Position: {x: -100, y: -80, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3789584418584728105}
-    m_Position: {x: 300, y: -170, z: 0}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   - serializedVersion: 1
     m_State: {fileID: -4548534338047252556}
     m_Position: {x: 660, y: -170, z: 0}
@@ -756,68 +521,22 @@ AnimatorStateMachine:
     m_Position: {x: 890, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4539061706141469713}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_Position: {x: 490, y: 20, z: 0}
-=======
     m_Position: {x: 590, y: -10, z: 0}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-    m_Position: {x: 490, y: 20, z: 0}
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-    m_Position: {x: 590, y: -10, z: 0}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   - serializedVersion: 1
     m_State: {fileID: -5123721712968313997}
     m_Position: {x: 290, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7993020627545412090}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_Position: {x: 490, y: 100, z: 0}
-=======
     m_Position: {x: 470, y: 100, z: 0}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
-    m_Position: {x: 490, y: 100, z: 0}
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-    m_Position: {x: 470, y: 100, z: 0}
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   - serializedVersion: 1
     m_State: {fileID: -2915486652667065794}
     m_Position: {x: -210, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8913690312654132761}
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_Position: {x: 250, y: -120, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 5312383655817829860}
-    m_Position: {x: 790, y: 80, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1503093200934564925}
-    m_Position: {x: 490, y: 180, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1514009757083221602}
-    m_Position: {x: 490, y: -50, z: 0}
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_Position: {x: 40, y: -170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5634297594043191437}
     m_Position: {x: 40, y: -20, z: 0}
-<<<<<<< HEAD
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -854,72 +573,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
---- !u!1102 &1503093200934564925
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: jump 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 9124513893246970642}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a196441ed95365b45b924d52d5886192, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1514009757083221602
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: jump 0 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -7113249548829457236}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a196441ed95365b45b924d52d5886192, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
-<<<<<<< HEAD
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &2229236344166270101
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -945,12 +598,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 --- !u!1101 &2343409678691749117
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -976,9 +623,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
 --- !u!1102 &3789584418584728105
 AnimatorState:
   serializedVersion: 6
@@ -986,22 +630,10 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: jump
+  m_Name: Pistol jump anim
   m_Speed: 1
   m_CycleOffset: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_Transitions:
-  - {fileID: 5212084646471040231}
-<<<<<<< HEAD
-=======
   m_Transitions: []
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-  m_Transitions: []
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -1068,19 +700,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!1101 &5212084646471040231
-=======
 --- !u!1101 &8075536377266337220
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
---- !u!1101 &5212084646471040231
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
---- !u!1101 &8075536377266337220
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1089,69 +709,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_ConditionEvent: isJumping
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -2684569135274890879}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.34982723
-  m_TransitionOffset: 0
-  m_ExitTime: 0.027341746
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1102 &5312383655817829860
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Pistol jump anim 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a196441ed95365b45b924d52d5886192, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1101 &5399563196421141716
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isRunning
-<<<<<<< HEAD
-=======
     m_ConditionEvent: isMeele
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-=======
-    m_ConditionEvent: isMeele
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7993020627545412090}
@@ -1161,122 +719,8 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
-  m_ExitTime: 0.6052631
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &5972757873269119843
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isRunning
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -4539061706141469713}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0.20833318
-  m_ExitTime: 1.08060894e-10
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &7591186908912480408
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isHit
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -2915486652667065794}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &8217220824429781586
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: isJumping
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 3789584418584728105}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0.2028258
-  m_ExitTime: 0.0000000016946549
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1101 &9124513893246970642
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isJumping
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -7993020627545412090}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.0907754
-  m_TransitionOffset: 0
-  m_ExitTime: 0.00000001772665
-  m_HasExitTime: 0
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
   m_ExitTime: 0.8958333
   m_HasExitTime: 1
->>>>>>> 3a287f06c87b53d213057bc53903bf225723701b
-=======
->>>>>>> 9b9f8a9 (SecondLevel with player controller and cameras.)
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
