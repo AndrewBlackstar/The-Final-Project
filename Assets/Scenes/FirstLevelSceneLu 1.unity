@@ -6783,6 +6783,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5395795522340660265, guid: 082284de42b535d47a490943ae7175fb, type: 3}
+      propertyPath: weaponHolder
+      value: 
+      objectReference: {fileID: 1370515576}
+    - target: {fileID: 5395795522340660265, guid: 082284de42b535d47a490943ae7175fb, type: 3}
       propertyPath: armas.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -7643,6 +7647,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc00000000006674582039147280343, type: 3}
+--- !u!1 &1370515576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3358289762004330834, guid: 082284de42b535d47a490943ae7175fb, type: 3}
+  m_PrefabInstance: {fileID: 1219727632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390408514
 GameObject:
   m_ObjectHideFlags: 0
