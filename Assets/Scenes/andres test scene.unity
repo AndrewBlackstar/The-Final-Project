@@ -989,11 +989,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1048820873138958677, guid: af417b0149ddf3449bc77cb94461657f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1292291461828051048, guid: af417b0149ddf3449bc77cb94461657f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3747996342390434581, guid: af417b0149ddf3449bc77cb94461657f, type: 3}
       propertyPath: m_Pivot.x
@@ -1079,13 +1079,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 5812398296970102879, guid: af417b0149ddf3449bc77cb94461657f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6412921587574982655, guid: af417b0149ddf3449bc77cb94461657f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8167868310784013934, guid: af417b0149ddf3449bc77cb94461657f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

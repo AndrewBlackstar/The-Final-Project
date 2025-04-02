@@ -19,23 +19,36 @@ public class UIControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // Cargar mute si está guardado
         if (PlayerPrefs.HasKey("Muted"))
         {
             muteToggle.isOn = PlayerPrefs.GetInt("Muted") == 1;
             SetMute();
         }
 
-        if (PlayerPrefs.HasKey("musicVolume") && PlayerPrefs.HasKey("sfxVolume"))
+        // Cargar valores de volumen guardados
+        if (PlayerPrefs.HasKey("musicVolume"))
         {
-            LoadVolume();
+            musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         }
         else
         {
-            SetMusicVolume();
-            SetSfxVolume();
+            musicSlider.value = 1f; // Valor por defecto
         }
 
-        
+        if (PlayerPrefs.HasKey("sfxVolume"))
+        {
+            sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        }
+        else
+        {
+            sfxSlider.value = 1f; // Valor por defecto
+        }
+
+        Debug.Log("Volumen inicial - Música: " + musicSlider.value + ", SFX: " + sfxSlider.value);
+
+        SetMusicVolume();
+        SetSfxVolume();
     }
 
     void Update()
@@ -81,15 +94,19 @@ public class UIControl : MonoBehaviour
     public void SetMusicVolume()
     {
         float musicVolume = musicSlider.value;
-        audioMixer.SetFloat("Music", MathF.Log10(musicVolume)*20);
-        PlayerPrefs.SetFloat("Music", musicVolume);
-        
+        audioMixer.SetFloat("Music", MathF.Log10(musicVolume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.Save();
+        Debug.Log("Música guardada: " + musicVolume);
     }
 
     public void SetSfxVolume()
     {
         float sfxVolume = sfxSlider.value;
-        audioMixer.SetFloat("sfx", MathF.Log10(sfxVolume)*20);
+        audioMixer.SetFloat("sfx", MathF.Log10(sfxVolume) * 20);
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        PlayerPrefs.Save();
+        Debug.Log("SFX guardado: " + sfxVolume);
     }
 
     public void SetMute()
@@ -98,7 +115,7 @@ public class UIControl : MonoBehaviour
         {
             audioMixer.SetFloat("Music", -80f);
             audioMixer.SetFloat("sfx", -80f);
-            PlayerPrefs.SetInt("Muted", 1); // Guardamos el estado de mute
+            PlayerPrefs.SetInt("Muted", 1);
         }
         else
         {
@@ -106,13 +123,6 @@ public class UIControl : MonoBehaviour
             SetSfxVolume();
             PlayerPrefs.SetInt("Muted", 0);
         }
-    }
-
-    public void LoadVolume()
-    {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-        SetMusicVolume();
-        SetSfxVolume();
+        PlayerPrefs.Save();
     }
 }
