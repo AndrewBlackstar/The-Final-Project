@@ -16,6 +16,8 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private GameObject[] weapons; // Array para almacenar las armas
     private int lastWeaponID = -1; // Para evitar cambios innecesarios
 
+    [SerializeField] Camera playerCamera;
+
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
@@ -102,7 +104,19 @@ public class MovementPlayer : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
+
+
+        Vector3 forward = playerCamera.transform.forward;
+        forward.y = 0f;
+        forward.Normalize();
+
+        Vector3 right = playerCamera.transform.right;
+        right.y = 0f;
+        right.Normalize();
+
+
+        moveDirection = forward * vertical + right * horizontal;
+
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -138,11 +152,11 @@ public class MovementPlayer : MonoBehaviour
 
     private void RotateTowardsMovement()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime
-        );
+        if (moveDirection != Vector3.zero)
+        {
+
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 }

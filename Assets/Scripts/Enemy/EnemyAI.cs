@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         //agent = GetComponent<NavMeshAgent>();
         enemyRb = GetComponent<Rigidbody>();
         throwManager = GetComponent<EnemyThrowManager>();

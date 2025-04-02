@@ -17,6 +17,7 @@ public class EnemyBase : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         enemyRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
