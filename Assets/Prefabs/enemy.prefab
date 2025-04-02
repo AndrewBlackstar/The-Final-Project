@@ -240,7 +240,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.32
-  m_BaseOffset: -0.02
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7959860364301165301
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f18364a49dfc427b86fa7f9b0cebc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6910036286606288937, guid: 082284de42b535d47a490943ae7175fb, type: 3}
   attackRange: 2
   detectionRange: 15
   pushForce: 5
