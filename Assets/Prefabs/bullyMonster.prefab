@@ -2126,9 +2126,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.139448
+  m_Height: 1.8825425
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7974869, z: 0}
+  m_Center: {x: 0, y: 0.9259396, z: 0}
 --- !u!54 &8924754190962500884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2168,7 +2168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e073858280eba466baca277181f56146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6910036286606288937, guid: 082284de42b535d47a490943ae7175fb, type: 3}
   speed: 10
   attackRange: 2
   pushForce: 5
@@ -2210,7 +2210,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &5111764478202350226

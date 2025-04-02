@@ -57,7 +57,7 @@ public class EnemyBase : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
 
         // Aplica movimiento 
-        enemyRb.linearVelocity = new Vector3(direction.x * speed, enemyRb.linearVelocity.y, direction.z * speed);
+        enemyRb.velocity = new Vector3(direction.x * speed, enemyRb.velocity.y, direction.z * speed);
 
         // Hacer que el enemigo gire hacia el jugador
         if (direction != Vector3.zero)
