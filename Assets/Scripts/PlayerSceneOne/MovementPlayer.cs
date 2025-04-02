@@ -8,142 +8,137 @@ public class MovementPlayer : MonoBehaviour
     public float rotationSpeed = 10f;
     public float jumpForce = 7f;
     [SerializeField] private Rigidbody playerRigidbody;
-    [SerializeField] private Animator animator; // Agregado para animaciones
-    private Vector3 moveDirection;
+    public Vector3 moveDirection; //se puso publica para llamar 
     public bool isGrounded;
 
-    [Header("Select Weapons")]
     [Header("Armas")]
-    public Transform weaponsParent;  // El objeto vacío que contiene las armas como hijos
-    [SerializeField]private GameObject[] weapons;  // Array para almacenar las armasF
-    
-
+    public Transform weaponsParent; // AsignaR el objeto padre "Weapons" en el Inspector
+    [SerializeField] private GameObject[] weapons; // Array para almacenar las armas
+    private int lastWeaponID = -1; // Para evitar cambios innecesarios
 
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>(); // Obtener el Animator adjunto
+        // animator = GetComponent<Animator>();
 
-        // Inicializar el array de armas
+        // Inicializar sistema de armas (mejorado)
+        InitializeWeapons();
+    }
+
+    void InitializeWeapons()
+    {
+        if (weaponsParent == null)
+        {
+            Debug.LogError("❌ Error: No se asignó 'weaponsParent' en el Inspector.");
+            return;
+        }
+
         weapons = new GameObject[weaponsParent.childCount];
-
-        // Llenar el array con las armas, desactivándolas inicialmente
         for (int i = 0; i < weaponsParent.childCount; i++)
         {
             weapons[i] = weaponsParent.GetChild(i).gameObject;
-            weapons[i].SetActive(false);  // Desactivar todas las armas al principio
+            weapons[i].SetActive(false);
+            Debug.Log($"✅ Arma registrada: {weapons[i].name} (Posición: {i + 1})");
         }
-
     }
 
     void Update()
     {
         HandleInput();
 
+        // Actualizar arma activa (versión optimizada)
+        UpdateActiveWeapon();
+
         if (moveDirection != Vector3.zero)
         {
             RotateTowardsMovement();
         }
 
-        // Agregado para animaciones Se llaman aqui para que se actualicen en cada frame.
-        //Aca  camina
-        if (!Input.GetKey("left shift") && moveDirection != Vector3.zero)
-        {
-            RotateTowardsMovement();
-            animator.SetBool("isWalking", true);
-        }
-        //aca corre
-        else if (Input.GetKey("left shift") && moveDirection != Vector3.zero)
-        {
-            RotateTowardsMovement();
-            animator.SetBool("isRunning", true);
-            moveSpeed = 7f;
-        }
-        //si no se esta moviendo
-        else if (moveDirection == Vector3.zero)
-        {
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", false);
-            moveSpeed = 5f;
-        }
-
-
-        //Aca Meele  input fire si  solo ataca y esta en idle
-        if (Input.GetButtonDown("Fire2"))
-        {
-            animator.SetTrigger("isMeele");
-        }
-        else
-        {
-            animator.SetBool("isMeele", false);
-        }
-
-        // Aca  si    fire1 animaciopn  pistol idle
-        if (Input.GetButtonDown("Fire1"))
-        {
-            animator.SetTrigger("isPistolIdle");
-        }
-        else
-        {
-            animator.SetBool("isPistolIdle", false);
-        }
-
-
     }
+
+    // ---- **Añadidos para mejorar el sistema de armas** ---- 
+    void UpdateActiveWeapon()
+    {
+        int newWeaponID = WeaponWheelController.weaponID;
+
+        // Solo cambiar si el ID es diferente y válido
+        if (newWeaponID != lastWeaponID && newWeaponID >= 0 && newWeaponID <= weapons.Length)
+        {
+            SwitchWeapon(newWeaponID);
+        }
+    }
+
+
+
+    void SwitchWeapon(int weaponID)
+    {
+        if (weaponID == 0) return; // No hacer nada si weaponID es 0
+
+        // Desactivar todas las armas antes de activar la nueva
+        foreach (var weapon in weapons)
+        {
+            if (weapon != null) weapon.SetActive(false);
+        }
+
+        int arrayIndex = weaponID - 1;
+        if (arrayIndex < weapons.Length && weapons[arrayIndex] != null)
+        {
+            weapons[arrayIndex].SetActive(true);
+            Debug.Log($"🔫 Arma activada: {weapons[arrayIndex].name} (ID: {weaponID})");
+        }
+
+        lastWeaponID = weaponID;
+    }
+
+    // ---------------------------------------------------------
+
+
     void FixedUpdate()
     {
         ApplyPhysicsMovement();
     }
 
-
     private void HandleInput()
     {
-        // Entrada básica de movimiento
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
-        // Salto si oprimimos Boton Jump (input manager) y está tocando el suelo.
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             ApplyJump();
         }
     }
+
     private void ApplyPhysicsMovement()
     {
-        // Movimiento con fuerzas físicas por medio de método MovePosition
         playerRigidbody.MovePosition(transform.localPosition + moveDirection * moveSpeed * Time.fixedDeltaTime);
-
     }
+
     private void ApplyJump()
     {
         playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
     }
 
-    //Esto nos comunica cuando colisiona con un objeto que tenga Tag "Floor"
     private void OnCollisionEnter(Collision other)
     {
-
         if (other.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
         }
     }
-    //Esto nos comunica cuando deja de colisionar con un objeto que tenga Tag "Floor"
+
     private void OnCollisionExit(Collision other)
     {
-
         if (other.gameObject.CompareTag("Floor"))
         {
             isGrounded = false;
         }
     }
+
     private void RotateTowardsMovement()
     {
-        // Rotación suave hacia la dirección de movimiento
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             targetRotation,
@@ -151,4 +146,3 @@ public class MovementPlayer : MonoBehaviour
         );
     }
 }
-
