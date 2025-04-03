@@ -8,22 +8,21 @@ public class MovementPlayer : MonoBehaviour
     public float rotationSpeed = 10f;
     public float jumpForce = 7f;
     [SerializeField] private Rigidbody playerRigidbody;
-    public Vector3 moveDirection; //se puso publica para llamar 
+    public Vector3 moveDirection;
     public bool isGrounded;
+    Animator animator;
 
     [Header("Armas")]
-    public Transform weaponsParent; // AsignaR el objeto padre "Weapons" en el Inspector
-    [SerializeField] private GameObject[] weapons; // Array para almacenar las armas
-    private int lastWeaponID = -1; // Para evitar cambios innecesarios
+    public Transform weaponsParent;
+    [SerializeField] private GameObject[] weapons;
+    private int lastWeaponID = -1;
 
     [SerializeField] Camera playerCamera;
 
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
-        // animator = GetComponent<Animator>();
-
-        // Inicializar sistema de armas (mejorado)
+        animator = GetComponent<Animator>();
         InitializeWeapons();
     }
 
@@ -47,53 +46,8 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
         HandleInput();
-
-        // Actualizar arma activa (versión optimizada)
         UpdateActiveWeapon();
-
-        if (moveDirection != Vector3.zero)
-        {
-            RotateTowardsMovement();
-        }
-
     }
-
-    // ---- **Añadidos para mejorar el sistema de armas** ---- 
-    void UpdateActiveWeapon()
-    {
-        int newWeaponID = WeaponWheelController.weaponID;
-
-        // Solo cambiar si el ID es diferente y válido
-        if (newWeaponID != lastWeaponID && newWeaponID >= 0 && newWeaponID <= weapons.Length)
-        {
-            SwitchWeapon(newWeaponID);
-        }
-    }
-
-
-
-    void SwitchWeapon(int weaponID)
-    {
-        if (weaponID == 0) return; // No hacer nada si weaponID es 0
-
-        // Desactivar todas las armas antes de activar la nueva
-        foreach (var weapon in weapons)
-        {
-            if (weapon != null) weapon.SetActive(false);
-        }
-
-        int arrayIndex = weaponID - 1;
-        if (arrayIndex < weapons.Length && weapons[arrayIndex] != null)
-        {
-            weapons[arrayIndex].SetActive(true);
-            Debug.Log($"🔫 Arma activada: {weapons[arrayIndex].name} (ID: {weaponID})");
-        }
-
-        lastWeaponID = weaponID;
-    }
-
-    // ---------------------------------------------------------
-
 
     void FixedUpdate()
     {
@@ -105,33 +59,37 @@ public class MovementPlayer : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
+        moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
-        Vector3 forward = playerCamera.transform.forward;
-        forward.y = 0f;
-        forward.Normalize();
-
-        Vector3 right = playerCamera.transform.right;
-        right.y = 0f;
-        right.Normalize();
-
-
-        moveDirection = forward * vertical + right * horizontal;
-
+        animator.SetFloat("horizontal", moveDirection.x);
+        animator.SetFloat("vertical", moveDirection.z);
+        
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             ApplyJump();
+           
         }
     }
 
     private void ApplyPhysicsMovement()
     {
-        playerRigidbody.MovePosition(transform.localPosition + moveDirection * moveSpeed * Time.fixedDeltaTime);
+        if (moveDirection.magnitude >= 0.1f)
+        {
+            Vector3 moveDir = playerCamera.transform.right * moveDirection.x + playerCamera.transform.forward * moveDirection.z;
+            moveDir.y = 0f;
+            playerRigidbody.MovePosition(playerRigidbody.position + moveDir * moveSpeed * Time.fixedDeltaTime);
+
+            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+            playerRigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+        }
     }
 
     private void ApplyJump()
     {
         playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        animator.SetBool("isJumping", true);
+        Debug.Log("Inicio de salto");
     }
 
     private void OnCollisionEnter(Collision other)
@@ -139,6 +97,8 @@ public class MovementPlayer : MonoBehaviour
         if (other.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
+            animator.SetBool("isJumping", false);
+            Debug.Log("🔵 Aterrizaje");
         }
     }
 
@@ -146,17 +106,60 @@ public class MovementPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Floor"))
         {
+           
             isGrounded = false;
         }
     }
 
-    private void RotateTowardsMovement()
+    void UpdateActiveWeapon()
     {
-        if (moveDirection != Vector3.zero)
-        {
+        int newWeaponID = WeaponWheelController.weaponID;
 
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        if (newWeaponID != lastWeaponID && newWeaponID >= 0 && newWeaponID <= weapons.Length)
+        {
+            SwitchWeapon(newWeaponID);
         }
     }
+
+    void SwitchWeapon(int weaponID)
+    {
+        if (weaponID == 0) return;
+
+        foreach (var weapon in weapons)
+        {
+            if (weapon != null) weapon.SetActive(false);
+        }
+
+        int arrayIndex = weaponID - 1;
+        if (arrayIndex < weapons.Length && weapons[arrayIndex] != null)
+        {
+            weapons[arrayIndex].SetActive(true);
+            Debug.Log($"🔫 Arma activada: {weapons[arrayIndex].name} (ID: {weaponID})");
+
+            WeaponController weaponController = weapons[arrayIndex].GetComponent<WeaponController>();
+            Debug.Log($"🧐 Buscando WeaponController en {weapons[arrayIndex].name} → {(weaponController != null ? "✅ Encontrado" : "❌ No encontrado")}");
+
+            if (weaponController != null)
+            {
+                PlayerCombat playerCombat = GetComponent<PlayerCombat>();
+                if (playerCombat != null)
+                {
+                    playerCombat.SetCurrentWeapon(weaponController);
+                    Debug.Log($"✅ {weapons[arrayIndex].name} asignada a PlayerCombat.");
+                }
+                else
+                {
+                    Debug.LogError("❌ No se encontró PlayerCombat en el jugador.");
+                }
+            }
+            else
+            {
+                Debug.LogError($"❌ El arma {weapons[arrayIndex].name} no tiene WeaponController.");
+            }
+        }
+
+        lastWeaponID = weaponID;
+    }
+
+
 }
