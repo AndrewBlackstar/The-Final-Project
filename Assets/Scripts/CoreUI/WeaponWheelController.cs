@@ -17,6 +17,12 @@ public class WeaponWheelController : MonoBehaviour
         player = GameObject.Find("Player armed");
         animator = player.GetComponent<Animator>();
         playerCombat = player.GetComponent<PlayerCombat>();
+
+        // Asignar un valor predeterminado al weaponID (por ejemplo, 1 para el cañón)
+        weaponID = 1;
+
+        // Inicializar el arma al inicio del juego
+        UpdateCanvasWeapon(1);
     }
 
     void Update()
@@ -29,7 +35,7 @@ public class WeaponWheelController : MonoBehaviour
 
             if (!weaponWheeSelected) // Si se cierra el menú, actualizar el arma en el Canvas
             {
-                UpdateCanvasWeapon();
+                UpdateCanvasWeapon(weaponID);
             }
         }
 
@@ -47,11 +53,11 @@ public class WeaponWheelController : MonoBehaviour
         }
     }
 
-    void UpdateCanvasWeapon()
+    void UpdateCanvasWeapon(int id)
     {
         WeaponController newWeapon = null;
-
-        switch (weaponID)
+        weaponID = id;
+        switch (id)
         {
             
             case 1: // Cañón

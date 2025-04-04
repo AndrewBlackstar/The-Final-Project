@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7934263414032629495}
   - component: {fileID: 3265461952749740452}
   - component: {fileID: 5076826069760602390}
-  - component: {fileID: 3274455161960630549}
+  - component: {fileID: 6773453258209760834}
   m_Layer: 0
   m_Name: BulletCanon
   m_TagString: Untagged
@@ -83,7 +83,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3274455161960630549
+--- !u!114 &6773453258209760834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,12 +92,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5741861200108667572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23dfa0c481cdc445b24572f5157f23a, type: 3}
+  m_Script: {fileID: 11500000, guid: 79ead80241fb6f84ebbb2468f70f5639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  speed: 20
-  damage: 10
+  speed: 50
+  damage: 1
+  slowPercentage: 0.8
+  slowDuration: 3
+  angle: 0
+  direction: {x: 0, y: 0, z: 1}
+  lifeTime: 5
 --- !u!1001 &90427085253113912
 PrefabInstance:
   m_ObjectHideFlags: 0

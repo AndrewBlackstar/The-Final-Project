@@ -1,7 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IMovable
 {
     [Header("Player Settings")]
     public Transform player;
@@ -9,7 +8,6 @@ public class EnemyBase : MonoBehaviour
     public float detectionRange = 15f;
     public float pushForce = 5f;
     public float attackCooldown = 1f;
-    private float speed = 3f;
 
     private Rigidbody enemyRb;
     private float lastAttackTime = 0f;
@@ -25,6 +23,9 @@ public class EnemyBase : MonoBehaviour
         enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         enemyRb.constraints = RigidbodyConstraints.FreezeRotation;
     }
+
+    // Implementación de la interfaz IMovable
+    public float Speed { get; set; } = 3f; // Inicializa la velocidad base
 
     void Update()
     {
@@ -56,8 +57,8 @@ public class EnemyBase : MonoBehaviour
     {
         Vector3 direction = (player.position - transform.position).normalized;
 
-        // Aplica movimiento 
-        enemyRb.linearVelocity = new Vector3(direction.x * speed, enemyRb.linearVelocity.y, direction.z * speed);
+        // Aplica movimiento usando la propiedad Speed
+        enemyRb.linearVelocity = new Vector3(direction.x * Speed, enemyRb.linearVelocity.y, direction.z * Speed);
 
         // Hace que el enemigo gire hacia el jugador
         if (direction != Vector3.zero)
@@ -78,10 +79,10 @@ public class EnemyBase : MonoBehaviour
             Debug.Log("💥 Golpeando al jugador");
         }
 
-        //  Hacer daño al jugador 🔹
+        // Hacer daño al jugador 🔹
         if (player.TryGetComponent(out HealthManager healthManager))
         {
-            healthManager.takeDamage(10f); 
+            healthManager.takeDamage(10f);
             Debug.Log(" Daño causado al jugador");
         }
         else
@@ -91,5 +92,4 @@ public class EnemyBase : MonoBehaviour
 
         animator.SetBool("isAttacking", true);
     }
-
 }

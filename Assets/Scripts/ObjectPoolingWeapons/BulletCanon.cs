@@ -1,11 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Bullet3D : MonoBehaviour
+public class BulletCanon : MonoBehaviour
 {
     [Header("Variables")]
     public float speed = 1000f; // Más alto porque AddForce usa fuerza (no velocidad directa)
-    public float damage = 10f; // Daño que aplica la bala
-    [SerializeField] private float angle; // Ángulo de disparo
+    public float damage = 1f; // Daño reducido
+    public float slowPercentage = 0.8f; // Porcentaje de ralentización (50% en este caso)
+    public float slowDuration = 3f; // Duración del efecto de ralentización
+    [SerializeField] private float angle;
     public Vector3 direction;
     public System.Action destroyed;
 
@@ -38,12 +40,24 @@ public class Bullet3D : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Aplicar daño al enemigo
+            // Aplicar daño
             var health = collision.gameObject.GetComponent<HealthManager>();
             if (health != null)
             {
                 health.takeDamage(damage);
                 Debug.Log($"🩸 Daño aplicado: {damage} a {collision.gameObject.name}");
+            }
+
+            // Aplicar efecto de ralentización
+            var slowEffect = collision.gameObject.GetComponent<SlowEffect>();
+            if (slowEffect != null)
+            {
+                slowEffect.ApplySlow(slowPercentage, slowDuration);
+                Debug.Log($"⏳ Aplicando efecto de ralentización al enemigo: {collision.gameObject.name}");
+            }
+            else
+            {
+                Debug.LogWarning($"⚠️ El enemigo {collision.gameObject.name} no tiene el componente SlowEffect.");
             }
         }
 

@@ -3715,9 +3715,10 @@ GameObject:
   - component: {fileID: 4248069717543045099}
   - component: {fileID: 5984747346041724925}
   - component: {fileID: 2283334839145999835}
+  - component: {fileID: 7318531358383958752}
   m_Layer: 0
   m_Name: EnemyDodge
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3867,6 +3868,19 @@ MonoBehaviour:
   currentHealth: 0
   hasHit: 0
   healthSlider: {fileID: 2091423276147113599}
+--- !u!114 &7318531358383958752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119494106459499911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88283dcf8244064fafa0f4a3eae022c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowVfx: {fileID: 0}
 --- !u!1 &9121483748221672592
 GameObject:
   m_ObjectHideFlags: 0

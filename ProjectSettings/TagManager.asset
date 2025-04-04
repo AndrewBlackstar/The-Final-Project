@@ -9,6 +9,7 @@ TagManager:
   - objectBig
   - Floor
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
