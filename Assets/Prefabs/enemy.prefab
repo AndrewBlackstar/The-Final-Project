@@ -937,10 +937,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.37047198
-  m_Height: 1.4874353
+  m_Radius: 0.30549607
+  m_Height: 1.381063
   m_Direction: 1
-  m_Center: {x: 6.434782e-17, y: 0.6922126, z: -0.12952805}
+  m_Center: {x: -0.06497595, y: 0.74539876, z: -0.12952805}
 --- !u!54 &6918773058452472597
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -978,7 +978,7 @@ Animator:
   m_GameObject: {fileID: 7160919164016092737}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4c7f6aa51969f0d4984c0c5530987dc8, type: 2}
+  m_Controller: {fileID: 9100000, guid: c2d1df966d4004b2da1baa3cefce9908, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -999,7 +999,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7160919164016092737}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1008,7 +1008,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.32
+  m_Height: 1.35
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   attackRange: 2
   detectionRange: 15
   pushForce: 5
-  attackCooldown: 1
+  speed: 3
 --- !u!114 &8174373194667857411
 MonoBehaviour:
   m_ObjectHideFlags: 0
