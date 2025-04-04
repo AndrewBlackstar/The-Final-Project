@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
     public float detectionRange = 15f;
     public float pushForce = 5f;
     public float attackCooldown = 1f;
-    private float speed = 5f;
+    private float speed = 3f;
 
     private Rigidbody enemyRb;
     private float lastAttackTime = 0f;
@@ -38,7 +38,7 @@ public class EnemyBase : MonoBehaviour
             }
             else
             {
-                // Realizar el ataque mientras el tiempo actual es mayor al tiempo de cooldown
+                // Realiza el ataque mientras el tiempo actual es mayor al tiempo de cooldown
                 if (Time.time >= lastAttackTime + attackCooldown)
                 {
                     lastAttackTime = Time.time;
@@ -59,7 +59,7 @@ public class EnemyBase : MonoBehaviour
         // Aplica movimiento 
         enemyRb.linearVelocity = new Vector3(direction.x * speed, enemyRb.linearVelocity.y, direction.z * speed);
 
-        // Hacer que el enemigo gire hacia el jugador
+        // Hace que el enemigo gire hacia el jugador
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -78,11 +78,11 @@ public class EnemyBase : MonoBehaviour
             Debug.Log("💥 Golpeando al jugador");
         }
 
-        // 🔹 Hacer daño al jugador 🔹
+        //  Hacer daño al jugador 🔹
         if (player.TryGetComponent(out HealthManager healthManager))
         {
             healthManager.takeDamage(10f); 
-            Debug.Log("🩸 Daño causado al jugador");
+            Debug.Log(" Daño causado al jugador");
         }
         else
         {
