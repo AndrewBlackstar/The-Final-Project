@@ -232,6 +232,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UiAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 563
+        width: 643
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77b908f1b582c641afce9f1c309a72f
+      internalID: 206344195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UiAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 263
+        width: 195
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eded46abb203254791b4755c33f4b89
+      internalID: -969451474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -251,6 +295,8 @@ TextureImporter:
       UiAtlas_2: -1226478312
       UiAtlas_3: -851111422
       UiAtlas_4: 1768962193
+      UiAtlas_5: 206344195
+      UiAtlas_6: -969451474
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -53,12 +53,7 @@ public class WeaponWheelController : MonoBehaviour
 
         switch (weaponID)
         {
-            case 0: // Sin arma
-                animator.SetBool("hasWeapon", false);
-                animator.SetBool("hasSword", false);
-                selectedItem.sprite = noImage;
-                Debug.Log("🚫 Sin arma equipada.");
-                break;
+            
             case 1: // Cañón
                 animator.SetBool("hasWeapon", true);
                 animator.SetBool("hasSword", false);

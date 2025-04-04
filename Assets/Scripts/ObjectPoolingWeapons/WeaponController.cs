@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
     {
         if (shootPoint != null)
         {
-            shootPoint.position = transform.position; // O usa el bone de la animación
+            shootPoint.position = transform.position; // Opcional: Puedes usar el bone del arma
             shootPoint.rotation = transform.rotation;
         }
     }
@@ -28,21 +28,23 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        GameObject bullet = bulletPool.GetBullet();
+        // Obtener la bala del pool con la rotación corregida
+        GameObject bullet = bulletPool.GetBullet(shootPoint.position, Quaternion.LookRotation(shootPoint.forward));
+
         if (bullet == null)
         {
             Debug.LogError("❌ No hay balas disponibles en el BulletPool.");
             return;
         }
 
-        bullet.transform.SetPositionAndRotation(shootPoint.position, shootPoint.rotation);
-        bullet.SetActive(true);
+        // Ajustar la rotación manualmente si es necesario
+        bullet.transform.Rotate(0f, 90f, 0f); // Cambia este valor si sigue mal
 
         Bullet3D bulletScript = bullet.GetComponent<Bullet3D>();
         if (bulletScript != null)
         {
-            bulletScript.direction = shootPoint.forward;
-            Debug.Log($"🔫 Disparo desde {shootPoint.position} con dirección {shootPoint.forward}");
+            bulletScript.direction = bullet.transform.forward;
+            Debug.Log($"🔫 Disparo desde {shootPoint.position} con dirección {bullet.transform.forward}");
         }
         else
         {
