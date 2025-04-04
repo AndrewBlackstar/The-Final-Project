@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5875916615751931542}
   - component: {fileID: 468452283441538208}
   - component: {fileID: 469384378384557689}
+  - component: {fileID: 5726354310577627859}
   - component: {fileID: 8190593849935119121}
-  - component: {fileID: -3911317005605473824}
   m_Layer: 0
   m_Name: Bullet_Pistol_rubber duck
   m_TagString: Untagged
@@ -114,6 +114,21 @@ CapsuleCollider:
   m_Height: 0.07451235
   m_Direction: 1
   m_Center: {x: 0.0000000037252903, y: 0.013013171, z: 0.012321593}
+--- !u!114 &5726354310577627859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5835554412348615571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23dfa0c481cdc445b24572f5157f23a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  damage: 10
+  direction: {x: 0, y: 0, z: 0}
 --- !u!54 &8190593849935119121
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,21 +151,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3911317005605473824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5835554412348615571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d46db82611fc98e488d9474c6054670c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20

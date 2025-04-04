@@ -28,18 +28,30 @@ public class BulletPool3D : MonoBehaviour
         }
     }
 
-    public GameObject GetBullet()
+    public GameObject GetBullet(Vector3 position, Quaternion rotation)
     {
         foreach (var bullet in bulletsCharged)
         {
             if (!bullet.activeInHierarchy)
             {
+                bullet.transform.position = position;
+                bullet.transform.rotation = rotation;
+                bullet.SetActive(true);
+
+                // Reiniciar su Rigidbody si tiene uno
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                }
+
                 return bullet;
             }
         }
 
         // Si no hay balas disponibles, crear una nueva y agregarla al pool
-        GameObject newBullet = Instantiate(bulletPrefab);
+        GameObject newBullet = Instantiate(bulletPrefab, position, rotation);
         newBullet.SetActive(false);
         bulletsCharged.Add(newBullet);
         return newBullet;

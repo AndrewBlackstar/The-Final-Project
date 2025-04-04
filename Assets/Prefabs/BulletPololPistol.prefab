@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8673dd91463805e42be81b8ff7523d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolSize: 20
+  poolSize: 10
   bulletPrefab: {fileID: 5835554412348615571, guid: fde19dc010d1376438b2efb9c07379fe, type: 3}

@@ -57,7 +57,7 @@ public class EnemyBase : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
 
         // Aplica movimiento 
-        enemyRb.velocity = new Vector3(direction.x * speed, enemyRb.velocity.y, direction.z * speed);
+        enemyRb.linearVelocity = new Vector3(direction.x * speed, enemyRb.linearVelocity.y, direction.z * speed);
 
         // Hacer que el enemigo gire hacia el jugador
         if (direction != Vector3.zero)
@@ -75,9 +75,21 @@ public class EnemyBase : MonoBehaviour
         {
             Vector3 pushDirection = (player.position - transform.position).normalized;
             playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
-            Debug.Log("Golpeando al jugador");
+            Debug.Log("💥 Golpeando al jugador");
+        }
+
+        // 🔹 Hacer daño al jugador 🔹
+        if (player.TryGetComponent(out HealthManager healthManager))
+        {
+            healthManager.takeDamage(10f); 
+            Debug.Log("🩸 Daño causado al jugador");
+        }
+        else
+        {
+            Debug.LogError("No se encontró HealthManager en el jugador.");
         }
 
         animator.SetBool("isAttacking", true);
     }
+
 }

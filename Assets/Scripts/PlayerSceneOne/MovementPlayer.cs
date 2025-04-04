@@ -24,7 +24,10 @@ public class MovementPlayer : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         InitializeWeapons();
+
+       
     }
+
 
     void InitializeWeapons()
     {
@@ -121,7 +124,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    void SwitchWeapon(int weaponID)
+    public void SwitchWeapon(int weaponID)
     {
         if (weaponID == 0) return;
 

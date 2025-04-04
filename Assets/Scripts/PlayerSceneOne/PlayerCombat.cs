@@ -5,10 +5,12 @@ public class PlayerCombat : MonoBehaviour
     private Animator animator;
     private WeaponController currentWeapon;
     private float attackCooldown = 0.5f;
+    MovementPlayer player;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        player=GameObject.Find("Player armed").GetComponent<MovementPlayer>();
     }
 
     void Update()
@@ -69,5 +71,11 @@ public class PlayerCombat : MonoBehaviour
 
         currentWeapon = newWeapon;
         Debug.Log($"✅ PlayerCombat ha recibido el arma: {newWeapon.gameObject.name}");
+    }
+
+    public void EquipDefaultWeaponFromSignal()
+    {
+        WeaponWheelController.weaponID = 1;
+        player.SwitchWeapon(WeaponWheelController.weaponID);
     }
 }
