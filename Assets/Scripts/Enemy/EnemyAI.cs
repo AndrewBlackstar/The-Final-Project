@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IMovable
 {
     [Header("Player Settings")]
     public Transform player;
-    public float speed = 3f;
+    
     public float attackRange = 2f;
     public float pushForce = 5f;
     public float attackCooldown = 1f;
@@ -21,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     private readonly List<string> validTags = new() { "objectSmall", "objectMedium", "objectBig" };
     private EnemyThrowManager throwManager;
     private Animator animator;
+
+    public float Speed { get; set; } = 3f;
 
     void Start()
     {
@@ -54,7 +56,7 @@ public class EnemyAI : MonoBehaviour
     private void MoveTowardsPlayer()
     {
         Vector3 direction = (player.position - transform.position).normalized;
-        enemyRb.linearVelocity = new Vector3(direction.x * speed, enemyRb.linearVelocity.y, direction.z * speed);
+        enemyRb.linearVelocity = new Vector3(direction.x * Speed, enemyRb.linearVelocity.y, direction.z * Speed);
         animator.SetBool("isRunning", true);
     }
 

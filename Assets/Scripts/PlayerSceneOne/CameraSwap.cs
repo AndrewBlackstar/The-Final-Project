@@ -11,7 +11,7 @@ public class CameraSwap : MonoBehaviour
 
     private float xRotation = 0f;
     private float yRotation = 0f;
-    private bool isFirstPerson = false;
+    private bool isFirstPerson = true;
 
     void Start()
     {

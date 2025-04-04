@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public BulletPool3D bulletPool;
-    public Transform shootPoint;
+    public BulletPool3D bulletPool; // Pool de balas
+    public Transform shootPoint; // Punto de disparo (debe asignarse en el Inspector)
 
     void Update()
     {
         if (shootPoint != null)
         {
-            shootPoint.position = transform.position; // Opcional: Puedes usar el bone del arma
+            // Opcional: Asegúrate de que el shootPoint siga la posición/rotación del arma
+            shootPoint.position = transform.position;
             shootPoint.rotation = transform.rotation;
         }
     }
@@ -28,8 +29,8 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        // Obtener la bala del pool con la rotación corregida
-        GameObject bullet = bulletPool.GetBullet(shootPoint.position, Quaternion.LookRotation(shootPoint.forward));
+        // Obtener una bala del pool con la posición y rotación del shootPoint
+        GameObject bullet = bulletPool.GetBullet(shootPoint.position, shootPoint.rotation);
 
         if (bullet == null)
         {
@@ -37,18 +38,7 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        // Ajustar la rotación manualmente si es necesario
-        bullet.transform.Rotate(0f, 90f, 0f); // Cambia este valor si sigue mal
-
-        Bullet3D bulletScript = bullet.GetComponent<Bullet3D>();
-        if (bulletScript != null)
-        {
-            bulletScript.direction = bullet.transform.forward;
-            Debug.Log($"🔫 Disparo desde {shootPoint.position} con dirección {bullet.transform.forward}");
-        }
-        else
-        {
-            Debug.LogError("❌ La bala no tiene el script Bullet3D.");
-        }
+        // Notificar que se ha disparado
+        Debug.Log($"🔫 Disparo desde {shootPoint.position} con dirección {shootPoint.forward}");
     }
 }
