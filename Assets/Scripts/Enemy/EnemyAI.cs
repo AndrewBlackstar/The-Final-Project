@@ -18,9 +18,12 @@ public class EnemyAI : MonoBehaviour, IMovable
     //private NavMeshAgent agent;
 
     private float lastAttackTime = 0f;
+    [SerializeField] float damageAmount;
     private readonly List<string> validTags = new() { "objectSmall", "objectMedium", "objectBig" };
     private EnemyThrowManager throwManager;
     private Animator animator;
+
+    private HealthManager healthManager;
 
     public float Speed { get; set; } = 3f;
 
@@ -31,6 +34,7 @@ public class EnemyAI : MonoBehaviour, IMovable
         enemyRb = GetComponent<Rigidbody>();
         throwManager = GetComponent<EnemyThrowManager>();
         animator = GetComponent<Animator>();
+        healthManager = GetComponent<HealthManager>();
         
         enemyRb.isKinematic = false;
         enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -39,6 +43,12 @@ public class EnemyAI : MonoBehaviour, IMovable
 
     void Update()
     {
+        if (healthManager != null && healthManager.currentHealth <= 0)
+        {
+            Die();
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance > attackRange)
@@ -68,6 +78,13 @@ public class EnemyAI : MonoBehaviour, IMovable
             playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
             Debug.Log("Golpeando al jugador");
         }
+
+        // Aplicar daño al jugador
+        if (player.TryGetComponent(out HealthManager playerHealth))
+        {
+            playerHealth.takeDamage(damageAmount); // Daño fijo de 10 puntos (puedes ajustarlo según necesites)
+        }
+
         animator.SetBool("isAttacking", true);
     }
 
@@ -83,6 +100,15 @@ public class EnemyAI : MonoBehaviour, IMovable
             break;
         }
         // animator.SetBool("trow", true);
+    }
+
+    public void Die()
+    {
+        // Cambiar de escena usando el GameManager
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.LoadScene("cinematic 3"); 
+        }
     }
 }
 

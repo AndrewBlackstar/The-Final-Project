@@ -2715,6 +2715,16 @@ PlayableDirector:
     value: {fileID: 1981865180}
   - key: {fileID: 4606835335386214065, guid: 87cd521951e56b44a854574bda3d029b, type: 2}
     value: {fileID: 396947752}
+  - key: {fileID: -5560004974514528758, guid: 87cd521951e56b44a854574bda3d029b, type: 2}
+    value: {fileID: 524855201}
+  - key: {fileID: -9177845806251706025, guid: 87cd521951e56b44a854574bda3d029b, type: 2}
+    value: {fileID: 1803228111}
+  - key: {fileID: -5747751178466718070, guid: 87cd521951e56b44a854574bda3d029b, type: 2}
+    value: {fileID: 438992175}
+  - key: {fileID: 7707461529971622140, guid: 87cd521951e56b44a854574bda3d029b, type: 2}
+    value: {fileID: 1135105208}
+  - key: {fileID: -7636541701246617357, guid: 87cd521951e56b44a854574bda3d029b, type: 2}
+    value: {fileID: 805637782}
   m_ExposedReferences:
     m_References:
     - ca8f977e3b46a4c4190de2f56922c9fb: {fileID: 1706542905}
@@ -4322,8 +4332,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354191279}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1460465, y: 0.048341952, z: -0.0071454165, w: 0.9880701}
-  m_LocalPosition: {x: -2.2440186, y: 4.016, z: -0.7579994}
+  m_LocalRotation: {x: 0.03671569, y: -0.33742157, z: 0.013171793, w: 0.9405452}
+  m_LocalPosition: {x: -16.97998, y: 0.5799999, z: 46.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11177,7 +11187,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 360279347}
-  m_LocalEulerAnglesHint: {x: 16.816, y: 5.602, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 359, z: 0}
 --- !u!95 &805637782
 Animator:
   serializedVersion: 7
@@ -12505,7 +12515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &911369496
 Animator:
   serializedVersion: 7
@@ -13243,7 +13253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &959924331
 Animator:
   serializedVersion: 7
@@ -23586,7 +23596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1706542904
 Animator:
   serializedVersion: 7
@@ -27626,7 +27636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1981865178
 MonoBehaviour:
   m_ObjectHideFlags: 0
