@@ -41,9 +41,18 @@ public class HealthManager : MonoBehaviour
 
     public void Die()
     {
-        gameObject.SetActive(false);
-        GameManager.instance.GameOver();
+        if (CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+            GameManager.instance.GameOver();
+        }
+        else if (CompareTag("Enemy"))
+        {
+            // Llamamos al método Die() del EnemyAI si el enemigo muere
+            GetComponent<EnemyAI>()?.Die();
+        }
     }
 
+    
     
 }
