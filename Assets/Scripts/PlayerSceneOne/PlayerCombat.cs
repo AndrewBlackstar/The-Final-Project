@@ -7,10 +7,13 @@ public class PlayerCombat : MonoBehaviour
     private float attackCooldown = 0.5f;
     MovementPlayer player;
 
+    [SerializeField] private GameObject hitBox;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         player=GameObject.Find("Player armed").GetComponent<MovementPlayer>();
+        hitBox.SetActive(false);
     }
 
     void Update()
@@ -52,8 +55,22 @@ public class PlayerCombat : MonoBehaviour
     private void HandleMelee()
     {
         animator.SetBool("isAttacking", true);
+        
+        // Activa la hitbox un momento después (o usa evento de animación)
+        Invoke(nameof(ActivateHitbox), 0.2f);
+        Invoke(nameof(DeactivateHitbox), 0.4f);
 
         Invoke(nameof(ResetAttack), attackCooldown);
+    }
+
+    private void ActivateHitbox()
+    {
+        hitBox.SetActive(true);
+    }
+
+    private void DeactivateHitbox()
+    {
+        hitBox.SetActive(false);
     }
 
     private void ResetAttack()

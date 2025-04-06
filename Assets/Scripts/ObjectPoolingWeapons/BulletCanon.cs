@@ -40,6 +40,7 @@ public class BulletCanon : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            AudioManager.Instance.PlaySfx("shot canon");
             // Aplicar daño
             var health = collision.gameObject.GetComponent<HealthManager>();
             if (health != null)
