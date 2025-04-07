@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IMovable
@@ -13,7 +14,32 @@ public class EnemyBase : MonoBehaviour, IMovable
     protected float lastAttackTime = 0f;
     protected Animator animator;
 
+    [SerializeField] private string nextZoneTag = "zoneMid";
+    protected List<GameObject> nextZones = new List<GameObject>();
+
     public virtual float Speed { get; set; } = 3f;
+
+    protected virtual void Awake()
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.CompareTag(nextZoneTag) && obj.hideFlags == HideFlags.None && obj.scene.IsValid())
+            {
+                nextZones.Add(obj);
+            }
+        }
+
+        if (nextZones.Count == 0)
+        {
+            Debug.LogWarning("❌ No se encontraron zonas con el tag: " + nextZoneTag);
+        }
+        else
+        {
+            Debug.Log($"✅ Se encontraron {nextZones.Count} zonas con el tag '{nextZoneTag}'.");
+        }
+    }
 
     protected virtual void Start()
     {
@@ -76,5 +102,18 @@ public class EnemyBase : MonoBehaviour, IMovable
         }
 
         animator.SetTrigger("attack");
+    }
+
+    public virtual void Die()
+    {
+        foreach (var zone in nextZones)
+        {
+            if (zone != null)
+            {
+                zone.SetActive(true);
+            }
+        }
+
+        Destroy(gameObject);
     }
 }

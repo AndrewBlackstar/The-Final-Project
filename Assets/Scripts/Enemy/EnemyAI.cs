@@ -71,7 +71,7 @@ public class EnemyAI : EnemyDodge
             Debug.Log(" Lanzamiento finalizado");
         }
     }
-     public void Die()
+    public override void Die()
     {
         // Cambiar de escena usando el GameManager
         if (GameManager.instance != null)

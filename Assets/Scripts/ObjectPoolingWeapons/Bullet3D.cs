@@ -38,6 +38,7 @@ public class Bullet3D : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            AudioManager.Instance.PlaySfx("shot pistol");
             // Aplicar daño al enemigo
             var health = collision.gameObject.GetComponent<HealthManager>();
             if (health != null)

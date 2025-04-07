@@ -178,15 +178,37 @@ MonoBehaviour:
   musicSound:
   - name: BGMusic
     clip: {fileID: 8300000, guid: 2f7905da9a278f44e91774220aed5827, type: 3}
+  - name: victory
+    clip: {fileID: 8300000, guid: 5357d1fd82afff945a67efc6c63698b8, type: 3}
+  - name: defeat
+    clip: {fileID: 8300000, guid: 1e3527aa24cc3fc4fb66c06710c29f53, type: 3}
+  - name: Cinema1
+    clip: {fileID: 8300000, guid: 66e8923f4ceb79c49898180301f6ae5b, type: 3}
+  - name: Cinema2
+    clip: {fileID: 8300000, guid: 1f65afc65f18c9d4997ba7206a22eb33, type: 3}
+  - name: Cinema3
+    clip: {fileID: 8300000, guid: 4e435760d01193f4a9e6c7766498ea85, type: 3}
   SfxSound:
-  - name: shot
-    clip: {fileID: 0}
-  - name: explosion
-    clip: {fileID: 0}
+  - name: shot canon
+    clip: {fileID: 8300000, guid: f79574a158a6b86409e8ebb118cb90ed, type: 3}
+  - name: shot pistol
+    clip: {fileID: 8300000, guid: 588aded4fe854d54cbb6003d3fd85917, type: 3}
   - name: slap
-    clip: {fileID: 0}
-  - name: slap
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: e13c280aaddbf2449b12c89c302bc143, type: 3}
+  - name: button
+    clip: {fileID: 8300000, guid: 18c650b9c2be0df4f88481d4e669faf1, type: 3}
+  - name: button2
+    clip: {fileID: 8300000, guid: ff241ebf42f194e44af39a65c6175457, type: 3}
+  - name: Victory
+    clip: {fileID: 8300000, guid: 44d27d01024bef0469ac011679ec301a, type: 3}
+  - name: intro
+    clip: {fileID: 8300000, guid: 9a51da432e8ab944fa539fa002afb6e3, type: 3}
+  - name: SpawnLow
+    clip: {fileID: 8300000, guid: 8b1de314da41e124c95d8f5118cd0921, type: 3}
+  - name: SpawnMid
+    clip: {fileID: 8300000, guid: f9d33607c9fa7b544ab5be32402988ef, type: 3}
+  - name: SpawnHigh
+    clip: {fileID: 8300000, guid: 91f721161b8ee2d479832a1650dacf1e, type: 3}
   musicSource: {fileID: 6643432572719690321}
   sfxSource: {fileID: 3976835864486282333}
   mixer: {fileID: 24100000, guid: 3ac698342c72dee4b9410861e35d65f8, type: 2}
