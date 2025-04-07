@@ -13,6 +13,8 @@ public class SceneFader : MonoBehaviour
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+
+        AudioManager.Instance.PlayMusic("BGMusic");
     }
 
     void Update()
@@ -38,7 +40,7 @@ public class SceneFader : MonoBehaviour
             canvasGroup.alpha = Mathf.Lerp(1, 0, elapsed / fadeDuration);
             yield return null;
         }
-
+        AudioManager.Instance.PlaySfx("intro");
         SceneManager.LoadScene(nuevaEscena); // Cambiar a la nueva escena
     }
 }

@@ -10,6 +10,8 @@ TagManager:
   - Floor
   - Ground
   - Enemy
+  - zoneMid
+  - ZoneHIgh
   layers:
   - Default
   - TransparentFX

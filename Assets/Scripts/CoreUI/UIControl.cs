@@ -125,4 +125,9 @@ public class UIControl : MonoBehaviour
         }
         PlayerPrefs.Save();
     }
+
+    public void PlaySound()
+    {
+        AudioManager.Instance.PlaySfx("button");
+    }
 }
