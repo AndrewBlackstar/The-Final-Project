@@ -51,7 +51,7 @@ public class EnemyBase : MonoBehaviour, IMovable
     protected virtual void MoveTowardsPlayer()
     {
         Vector3 direction = (player.position - transform.position).normalized;
-        enemyRb.velocity = new Vector3(direction.x * Speed, enemyRb.velocity.y, direction.z * Speed);
+        enemyRb.linearVelocity = new Vector3(direction.x * Speed, enemyRb.linearVelocity.y, direction.z * Speed);
 
         if (direction != Vector3.zero)
         {
