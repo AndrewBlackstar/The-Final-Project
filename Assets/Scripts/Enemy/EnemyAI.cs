@@ -1,108 +1,77 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IMovable
+public class EnemyAI : EnemyDodge
 {
-    [Header("Player Settings")]
-    public Transform player;
-    
-    public float attackRange = 2f;
-    public float pushForce = 5f;
-    public float attackCooldown = 1f;
+    public GameObject throwablePrefab;
+    public Transform throwPoint;
+    public float throwCooldown = 3f;
 
-    [Header("Object Interaction")]
-    public float objectDetectionRange = 10f;
-    public LayerMask layerMask;
-    private Rigidbody enemyRb;
-    //private NavMeshAgent agent;
+    protected float lastThrowTime = 0f;
+    private bool isThrowing = false;
 
-    private float lastAttackTime = 0f;
-    [SerializeField] float damageAmount;
-    private readonly List<string> validTags = new() { "objectSmall", "objectMedium", "objectBig" };
-    private EnemyThrowManager throwManager;
-    private Animator animator;
-
-    private HealthManager healthManager;
-
-    public float Speed { get; set; } = 3f;
-
-    void Start()
+    protected override void Update()
     {
-        player = GameObject.FindWithTag("Player").transform;
-        //agent = GetComponent<NavMeshAgent>();
-        enemyRb = GetComponent<Rigidbody>();
-        throwManager = GetComponent<EnemyThrowManager>();
-        animator = GetComponent<Animator>();
-        healthManager = GetComponent<HealthManager>();
-        
-        enemyRb.isKinematic = false;
-        enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        enemyRb.constraints = RigidbodyConstraints.FreezeRotation;
-    }
-
-    void Update()
-    {
-        if (healthManager != null && healthManager.currentHealth <= 0)
-        {
-            Die();
-            return;
-        }
-
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance > attackRange)
+        if (isThrowing) return;
+
+        if (distance <= detectionRange && distance > attackRange)
         {
-            MoveTowardsPlayer();
-            FindAndPickObject();
+            if (Time.time >= lastThrowTime + throwCooldown)
+            {
+                StartCoroutine(ThrowSequence());
+                lastThrowTime = Time.time;
+            }
+
+            animator.SetBool("isRunning", false);
         }
-        else if (Time.time >= lastAttackTime + attackCooldown)
+        else
         {
-            lastAttackTime = Time.time;
-            AttackPlayer();
+            base.Update(); // Movimiento y ataque cuerpo a cuerpo
+        }
+
+        if (Time.time >= lastDodgeTime + dodgeCooldown)
+        {
+            Dodge();
+            lastDodgeTime = Time.time;
         }
     }
 
-    private void MoveTowardsPlayer()
+    IEnumerator ThrowSequence()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        enemyRb.linearVelocity = new Vector3(direction.x * Speed, enemyRb.linearVelocity.y, direction.z * Speed);
-        animator.SetBool("isRunning", true);
+        isThrowing = true;
+
+        //animator.SetTrigger("crouch");
+        yield return new WaitForSeconds(0.8f); // tiempo para la animaciÃ³n
+
+        //animator.SetTrigger("pickup");
+        yield return new WaitForSeconds(1f);
+
+        //animator.SetTrigger("throw");
+        yield return new WaitForSeconds(0.6f); // tiempo antes de lanzar
+
+        LaunchObject();
+
+        yield return new WaitForSeconds(0.5f); // terminar animaciÃ³n
+        isThrowing = false;
     }
 
-    private void AttackPlayer()
+    void LaunchObject()
     {
-        if (player.TryGetComponent(out Rigidbody playerRb))
+        if (throwablePrefab && throwPoint)
         {
-            Vector3 pushDirection = (player.position - transform.position).normalized;
-            playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
-            Debug.Log("Golpeando al jugador");
-        }
+            GameObject obj = Instantiate(throwablePrefab, throwPoint.position, throwPoint.rotation);
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            Vector3 dir = (player.position - throwPoint.position).normalized;
+            rb.velocity = dir * 12f;
 
-        // Aplicar daño al jugador
-        if (player.TryGetComponent(out HealthManager playerHealth))
-        {
-            playerHealth.takeDamage(damageAmount); // Daño fijo de 10 puntos (puedes ajustarlo según necesites)
+            Debug.Log(" Lanzamiento finalizado");
         }
-
-        animator.SetBool("isAttacking", true);
     }
-
-
-    private void FindAndPickObject()
-    {
-        Collider[] objects = Physics.OverlapSphere(transform.position, objectDetectionRange, layerMask, QueryTriggerInteraction.UseGlobal);
-
-        foreach (Collider obj in objects)
-        {
-            if (!validTags.Contains(obj.tag)) continue;
-            throwManager.PickUpObject(obj.gameObject);
-            break;
-        }
-        // animator.SetBool("trow", true);
-    }
-
-    public void Die()
+     public void Die()
     {
         // Cambiar de escena usando el GameManager
         if (GameManager.instance != null)
@@ -111,4 +80,3 @@ public class EnemyAI : MonoBehaviour, IMovable
         }
     }
 }
-

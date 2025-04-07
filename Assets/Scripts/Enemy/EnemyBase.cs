@@ -9,11 +9,13 @@ public class EnemyBase : MonoBehaviour, IMovable
     public float pushForce = 5f;
     public float attackCooldown = 1f;
 
-    private Rigidbody enemyRb;
-    private float lastAttackTime = 0f;
-    private Animator animator;
+    protected Rigidbody enemyRb;
+    protected float lastAttackTime = 0f;
+    protected Animator animator;
 
-    void Start()
+    public virtual float Speed { get; set; } = 3f;
+
+    protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         enemyRb = GetComponent<Rigidbody>();
@@ -24,27 +26,20 @@ public class EnemyBase : MonoBehaviour, IMovable
         enemyRb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
-    // Implementación de la interfaz IMovable
-    public float Speed { get; set; } = 3f; // Inicializa la velocidad base
-
-    void Update()
+    protected virtual void Update()
     {
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance <= detectionRange) // Solo se mueve si el jugador está dentro del rango de detección
+        if (distance <= detectionRange)
         {
             if (distance > attackRange)
             {
                 MoveTowardsPlayer();
             }
-            else
+            else if (Time.time >= lastAttackTime + attackCooldown)
             {
-                // Realiza el ataque mientras el tiempo actual es mayor al tiempo de cooldown
-                if (Time.time >= lastAttackTime + attackCooldown)
-                {
-                    lastAttackTime = Time.time;
-                    AttackPlayer();
-                }
+                lastAttackTime = Time.time;
+                AttackPlayer();
             }
         }
         else
@@ -53,14 +48,11 @@ public class EnemyBase : MonoBehaviour, IMovable
         }
     }
 
-    private void MoveTowardsPlayer()
+    protected virtual void MoveTowardsPlayer()
     {
         Vector3 direction = (player.position - transform.position).normalized;
+        enemyRb.velocity = new Vector3(direction.x * Speed, enemyRb.velocity.y, direction.z * Speed);
 
-        // Aplica movimiento usando la propiedad Speed
-        enemyRb.linearVelocity = new Vector3(direction.x * Speed, enemyRb.linearVelocity.y, direction.z * Speed);
-
-        // Hace que el enemigo gire hacia el jugador
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -70,26 +62,19 @@ public class EnemyBase : MonoBehaviour, IMovable
         animator.SetBool("isRunning", true);
     }
 
-    private void AttackPlayer()
+    protected virtual void AttackPlayer()
     {
         if (player.TryGetComponent(out Rigidbody playerRb))
         {
             Vector3 pushDirection = (player.position - transform.position).normalized;
             playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
-            Debug.Log("💥 Golpeando al jugador");
         }
 
-        // Hacer daño al jugador 🔹
         if (player.TryGetComponent(out HealthManager healthManager))
         {
             healthManager.takeDamage(10f);
-            Debug.Log(" Daño causado al jugador");
-        }
-        else
-        {
-            Debug.LogError("No se encontró HealthManager en el jugador.");
         }
 
-        animator.SetBool("isAttacking", true);
+        animator.SetTrigger("attack");
     }
 }

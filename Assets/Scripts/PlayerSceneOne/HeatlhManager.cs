@@ -48,7 +48,7 @@ public class HealthManager : MonoBehaviour
         }
         else if (CompareTag("Enemy"))
         {
-            // Llamamos al método Die() del EnemyAI si el enemigo muere
+            // Llamamos al mï¿½todo Die() del EnemyAI si el enemigo muere
             GetComponent<EnemyAI>()?.Die();
         }
     }
