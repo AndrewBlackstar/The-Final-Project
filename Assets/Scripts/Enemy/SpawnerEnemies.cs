@@ -18,12 +18,12 @@ public class SpawnerEnemies : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        AudioManager.Instance.PlaySfx(zones[0].songName);
         if (other.CompareTag("Player") && !playerInside) // Detectar eltag del player
         {
             Debug.Log("Spawner activado: el jugador entró en la zona.");
             playerInside = true;
             StartSpawning();
-            AudioManager.Instance.PlaySfx(zones[0].songName);
         }
     }
 

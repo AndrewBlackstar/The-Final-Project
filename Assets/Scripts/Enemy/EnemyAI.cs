@@ -66,12 +66,12 @@ public class EnemyAI : EnemyDodge
             GameObject obj = Instantiate(throwablePrefab, throwPoint.position, throwPoint.rotation);
             Rigidbody rb = obj.GetComponent<Rigidbody>();
             Vector3 dir = (player.position - throwPoint.position).normalized;
-            rb.velocity = dir * 12f;
+            rb.linearVelocity = dir * 12f;
 
             Debug.Log(" Lanzamiento finalizado");
         }
     }
-     public void Die()
+    public override void Die()
     {
         // Cambiar de escena usando el GameManager
         if (GameManager.instance != null)

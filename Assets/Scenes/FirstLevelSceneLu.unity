@@ -2232,7 +2232,7 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 971142329}
   firstPersonCamera: {fileID: 599042451}
   playerBody: {fileID: 171586918}
-  mouseSensitivity: 40
+  mouseSensitivity: 400
   verticalLookLimit: 80
 --- !u!4 &413632974
 Transform:
@@ -2976,6 +2976,7 @@ GameObject:
   - component: {fileID: 599042452}
   - component: {fileID: 599042451}
   - component: {fileID: 599042453}
+  - component: {fileID: 599042454}
   m_Layer: 0
   m_Name: FirtsPersonCinemachineCamera
   m_TagString: Untagged
@@ -3067,6 +3068,45 @@ MonoBehaviour:
     CameraRadius: 0.2
     DampingIntoCollision: 0
     DampingFromCollision: 0.5
+--- !u!114 &599042454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599042450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 0
+  IgnoreTag: 
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 0.4
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Strategy: 0
+    MaximumEffort: 4
+    SmoothingTime: 0
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 0
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2
 --- !u!1 &602855440
 GameObject:
   m_ObjectHideFlags: 0
@@ -3352,11 +3392,11 @@ GameObject:
   - component: {fileID: 638811551}
   m_Layer: 0
   m_Name: EnemyActivation6
-  m_TagString: Untagged
+  m_TagString: zoneMid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &638811548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5236,11 +5276,11 @@ GameObject:
   - component: {fileID: 803234082}
   m_Layer: 0
   m_Name: EnemyActivation5
-  m_TagString: Untagged
+  m_TagString: zoneMid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &803234079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6344,6 +6384,7 @@ GameObject:
   - component: {fileID: 971142330}
   - component: {fileID: 971142329}
   - component: {fileID: 971142331}
+  - component: {fileID: 971142332}
   m_Layer: 0
   m_Name: ThirdPersonCinemachineCamera
   m_TagString: Untagged
@@ -6402,7 +6443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971142328}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.006683283, y: -0.04376046, z: 0.0002927505, w: 0.9990197}
   m_LocalPosition: {x: 0.12000275, y: 0.23299998, z: -4.669998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6435,6 +6476,45 @@ MonoBehaviour:
     CameraRadius: 0.2
     DampingIntoCollision: 0
     DampingFromCollision: 0.5
+--- !u!114 &971142332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971142328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  IgnoreTag: 
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 2.1
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Strategy: 0
+    MaximumEffort: 4
+    SmoothingTime: 0
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 0
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2
 --- !u!1 &984652945
 GameObject:
   m_ObjectHideFlags: 0
@@ -6887,7 +6967,6 @@ GameObject:
   - component: {fileID: 1048159898}
   - component: {fileID: 1048159897}
   - component: {fileID: 1048159896}
-  - component: {fileID: 1048159900}
   - component: {fileID: 1048159901}
   m_Layer: 0
   m_Name: Camera
@@ -7007,26 +7086,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048159895}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12000275, y: 0.23299998, z: -4.669998}
+  m_LocalRotation: {x: 0.006683283, y: -0.04376046, z: 0.0002927505, w: 0.9990197}
+  m_LocalPosition: {x: 0.39793396, y: 0.27553016, z: -4.8363953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 413632974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1048159900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048159895}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7e23b6d7b4a6af42948bb2a823069da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0.06, y: 0.86, z: -3.71}
 --- !u!114 &1048159901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9792,11 +9858,11 @@ GameObject:
   - component: {fileID: 1618419826}
   m_Layer: 0
   m_Name: EnemyActivation8
-  m_TagString: Untagged
+  m_TagString: ZoneHIgh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1618419826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11603,11 +11669,11 @@ GameObject:
   - component: {fileID: 1902273453}
   m_Layer: 0
   m_Name: EnemyActivation10
-  m_TagString: Untagged
+  m_TagString: ZoneHIgh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1902273453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11811,15 +11877,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031010592, guid: abc00000000008885846061434411684, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 130.19
+      value: 130.18
       objectReference: {fileID: 0}
     - target: {fileID: 1031010592, guid: abc00000000008885846061434411684, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.19
+      value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 1031010592, guid: abc00000000008885846061434411684, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 106.63
+      value: 106.53
       objectReference: {fileID: 0}
     - target: {fileID: 1031010592, guid: abc00000000008885846061434411684, type: 3}
       propertyPath: m_LocalRotation.w
