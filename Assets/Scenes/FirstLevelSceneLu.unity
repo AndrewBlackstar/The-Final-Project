@@ -5696,7 +5696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031007322, guid: abc00000000014390448045857525840, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 59.7
+      value: 59.79
       objectReference: {fileID: 0}
     - target: {fileID: 1031007322, guid: abc00000000014390448045857525840, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5873,7 +5873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031011202, guid: abc00000000015336146022114885783, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 101.2
+      value: 101.28
       objectReference: {fileID: 0}
     - target: {fileID: 1031011202, guid: abc00000000015336146022114885783, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8021,6 +8021,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031007322, guid: abc00000000014390448045857525840, type: 3}
       propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031007325, guid: abc00000000014390448045857525840, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0135
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031007325, guid: abc00000000014390448045857525840, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031007325, guid: abc00000000014390448045857525840, type: 3}
+      propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12951,7 +12963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031007322, guid: abc00000000014390448045857525840, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 146.6
+      value: 146.79
       objectReference: {fileID: 0}
     - target: {fileID: 1031007322, guid: abc00000000014390448045857525840, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12975,6 +12987,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031007322, guid: abc00000000014390448045857525840, type: 3}
       propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031007325, guid: abc00000000014390448045857525840, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0186
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031007325, guid: abc00000000014390448045857525840, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2231
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031007325, guid: abc00000000014390448045857525840, type: 3}
+      propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
