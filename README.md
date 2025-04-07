@@ -81,9 +81,9 @@ Prepárate para enfrentarte a enemigos inesperados y mecánicas que no siguen re
 
 ## 🛠️ DESARROLLADO POR **L.U.F.A.D Studios**
 
-- 👩‍💼 [Luisa Saenz](https://lusaenz.itch.io/) - Project Manager / Enemy Behavior Programmer  
-- 👨‍💻 [Fabian Rincon](https://arcktx.itch.io/) - Programmer  
-- 🎨 [Andres Muñoz](https://andrew-blackstar.itch.io/) - 3D Artist / UI-UX Design  
-- 👨‍💻 [Jose Carranza](https://josedavdmast3r.itch.io/daydream) - Programmer  
+- 👩‍💼 [Luisa Saenz](https://lusaenz.itch.io/) - Project Manager / Enemy Behavior Programmer.
+- 👨‍💻 [Fabian Rincon](https://arcktx.itch.io/) - Programmer.
+- 🎨 [Andres Muñoz](https://andrew-blackstar.itch.io/) - 3D Artist / UI-UX Design.
+- 👨‍💻 [Jose Carranza](https://josedavdmast3r.itch.io/daydream) - Programmer.
 
 
