@@ -2372,7 +2372,7 @@ GameObject:
   - component: {fileID: 8359772220954932605}
   - component: {fileID: 5799287632715743041}
   - component: {fileID: 8924754190962500884}
-  - component: {fileID: 3649700475117996636}
+  - component: {fileID: -8002784014175848998}
   - component: {fileID: 7505567146373843827}
   - component: {fileID: 6973442138756836004}
   - component: {fileID: 5710266461159685426}
@@ -2474,7 +2474,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3649700475117996636
+--- !u!114 &-8002784014175848998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2487,14 +2487,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6910036286606288937, guid: 082284de42b535d47a490943ae7175fb, type: 3}
-  speed: 10
   attackRange: 2
+  detectionRange: 15
   pushForce: 5
   attackCooldown: 1
-  objectDetectionRange: 10
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
+  dodgeCooldown: 3
+  dodgeForce: 10
+  throwablePrefab: {fileID: 0}
+  throwPoint: {fileID: 0}
+  throwCooldown: 3
 --- !u!114 &7505567146373843827
 MonoBehaviour:
   m_ObjectHideFlags: 0
