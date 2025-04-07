@@ -2369,7 +2369,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8612469649475939462}
-  - component: {fileID: 8359772220954932605}
   - component: {fileID: 5799287632715743041}
   - component: {fileID: 8924754190962500884}
   - component: {fileID: -8002784014175848998}
@@ -2377,6 +2376,7 @@ GameObject:
   - component: {fileID: 6973442138756836004}
   - component: {fileID: 5710266461159685426}
   - component: {fileID: 4029196911001016190}
+  - component: {fileID: -5885249614781298351}
   m_Layer: 0
   m_Name: bullyMonster
   m_TagString: Enemy
@@ -2402,28 +2402,6 @@ Transform:
   - {fileID: 703270519207633542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8359772220954932605
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5083342864700507961}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4c7f6aa51969f0d4984c0c5530987dc8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &5799287632715743041
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2491,9 +2469,11 @@ MonoBehaviour:
   detectionRange: 15
   pushForce: 5
   attackCooldown: 1
+  nextZoneTag: zoneMid
   dodgeCooldown: 3
   dodgeForce: 10
-  throwablePrefab: {fileID: 0}
+  threatDetectionAngle: 45
+  throwablePrefab: {fileID: 1380248140509834611, guid: 20952d81f054588448a3e80b864ea1f9, type: 3}
   throwPoint: {fileID: 0}
   throwCooldown: 3
 --- !u!114 &7505567146373843827
@@ -2561,6 +2541,28 @@ NavMeshAgent:
   m_BaseOffset: 0.2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &-5885249614781298351
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083342864700507961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ce4774989c1d4ae097b39ca62967d6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5111764478202350226
 GameObject:
   m_ObjectHideFlags: 0

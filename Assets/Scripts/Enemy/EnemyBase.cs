@@ -106,6 +106,12 @@ public class EnemyBase : MonoBehaviour, IMovable
 
     public virtual void Die()
     {
+        // Activa la animación
+        if (animator != null)
+        {
+            animator.SetTrigger("die");
+        }
+
         foreach (var zone in nextZones)
         {
             if (zone != null)
@@ -114,6 +120,13 @@ public class EnemyBase : MonoBehaviour, IMovable
             }
         }
 
+        StartCoroutine(DeathDelay());
+    }
+
+    private System.Collections.IEnumerator DeathDelay()
+    {
+        // Espera a que termine la animación
+        yield return new WaitForSeconds(4f); 
         Destroy(gameObject);
     }
 }

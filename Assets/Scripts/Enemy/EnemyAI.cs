@@ -47,9 +47,6 @@ public class EnemyAI : EnemyDodge
         //animator.SetTrigger("crouch");
         yield return new WaitForSeconds(0.8f); // tiempo para la animación
 
-        //animator.SetTrigger("pickup");
-        yield return new WaitForSeconds(1f);
-
         //animator.SetTrigger("throw");
         yield return new WaitForSeconds(0.6f); // tiempo antes de lanzar
 

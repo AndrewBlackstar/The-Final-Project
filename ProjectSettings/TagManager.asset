@@ -12,6 +12,9 @@ TagManager:
   - Enemy
   - zoneMid
   - ZoneHIgh
+  - bulletDuck
+  - Canon
+  - Sword
   layers:
   - Default
   - TransparentFX
