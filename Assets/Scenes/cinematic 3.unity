@@ -4672,6 +4672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBox: {fileID: 0}
 --- !u!4 &370689604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1031007451, guid: abc00000000006674582039147280343, type: 3}
@@ -5859,6 +5860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBox: {fileID: 0}
 --- !u!114 &438992172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7106,6 +7108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBox: {fileID: 0}
 --- !u!114 &524855198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10428,7 +10431,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: FabisGym
+            m_StringArgument: GameWin
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
@@ -15723,6 +15726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBox: {fileID: 0}
 --- !u!114 &1135105205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24751,6 +24755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBox: {fileID: 0}
 --- !u!114 &1803228108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40410,6 +40415,7 @@ MonoBehaviour:
   detectionRange: 15
   pushForce: 5
   attackCooldown: 1
+  nextZoneTag: zoneMid
 --- !u!1 &9122603830909373485
 GameObject:
   m_ObjectHideFlags: 0

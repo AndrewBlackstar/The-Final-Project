@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -30,6 +31,31 @@ public class AudioManager : MonoBehaviour
         float volume = PlayerPrefs.GetFloat("musicVolume", 1f);
         mixer.SetFloat("Music", Mathf.Log10(volume) * 20);
         mixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
+
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        switch (currentScene)
+        {
+            case "cinematic 1":
+                PlayMusic("MenuMusic");
+                break;
+            case "cinematic 2":
+                PlayMusic("Level1Music");
+                break;
+            case "cinematic 3":
+                PlayMusic("BossMusic");
+                break;
+            case "GameWin":
+                PlayMusic("victory");
+                break;
+            case "GameOver":
+                PlayMusic("defeat");
+                break;
+            default:
+                PlayMusic("BGMusic");
+                break;
+        }
+
         PlayMusic("BGMusic");
     }
 
@@ -40,6 +66,9 @@ public class AudioManager : MonoBehaviour
         {
             Debug.Log("musica no encontrado");
         }
+
+        if (musicSource.clip == s.clip && musicSource.isPlaying)
+            return;
 
         else
         {

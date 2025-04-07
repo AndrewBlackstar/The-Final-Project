@@ -10,6 +10,7 @@ public class SpawnerEnemies : MonoBehaviour
         public Transform[] pointsSpawn;
         public GameObject[] enemiesAvailable;
         public int numberEnemies;
+        public string songName;
     }
 
     public ZoneSpawn[] zones; //Zonas de spawn
@@ -17,6 +18,7 @@ public class SpawnerEnemies : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        AudioManager.Instance.PlaySfx(zones[0].songName);
         if (other.CompareTag("Player") && !playerInside) // Detectar eltag del player
         {
             Debug.Log("Spawner activado: el jugador entró en la zona.");

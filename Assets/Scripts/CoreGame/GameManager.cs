@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        AudioManager.Instance.PlaySfx("Victory");
         SceneManager.LoadScene("GameWin");
     }
 

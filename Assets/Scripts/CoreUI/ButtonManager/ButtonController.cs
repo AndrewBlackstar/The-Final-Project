@@ -9,4 +9,14 @@ public class ButtonController : MonoBehaviour
         // Cargar la escena por su nombre
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ButtonSound()
+    {
+        AudioManager.Instance.PlaySfx("button");
+    }
+
+    public void Buttonv2()
+    {
+        AudioManager.Instance.PlaySfx("button2");
+    }
 }
