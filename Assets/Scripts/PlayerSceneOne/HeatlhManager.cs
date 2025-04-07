@@ -10,6 +10,8 @@ public class HealthManager : MonoBehaviour
 
     public Slider healthSlider;
 
+     private bool isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +27,7 @@ public class HealthManager : MonoBehaviour
 
     public void takeDamage(float damageAmmount)
     {
+        if (isDead) return; // Evita que tome daño muerto
         currentHealth -=damageAmmount;
 
         if(healthSlider != null)
@@ -41,6 +44,9 @@ public class HealthManager : MonoBehaviour
 
     public void Die()
     {
+        if (isDead) return; // Protege de doble muerte
+        isDead = true;
+        
         if (CompareTag("Player"))
         {
             gameObject.SetActive(false);
