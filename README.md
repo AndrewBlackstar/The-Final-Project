@@ -87,14 +87,3 @@ Prepárate para enfrentarte a enemigos inesperados y mecánicas que no siguen re
 - 👨‍💻 [Jose Carranza](https://josedavdmast3r.itch.io/daydream) - Programmer  
 
 
-
-
-<!-- 
-## 📁 DOCUMENTOS Y REPOSITORIOS
-
-- 📂 [Repositorio GitHub](https://github.com/AndrewBlackstar/The-Final-Project)
-- 📌 [Trello del Proyecto](https://trello.com/b/QoBySVJ0/proyecto)
-- 🎨 [Diseño en Canva](https://www.canva.com/design/DAGjTU5VI_c/yctojVXdUN5Y-o01rJDMHw/view?utm_content=DAGjTU5VI_c&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h16fd3d0580)
-
---- -->
-
