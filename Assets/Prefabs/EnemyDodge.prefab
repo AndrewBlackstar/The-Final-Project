@@ -3751,7 +3751,7 @@ Animator:
   m_GameObject: {fileID: 9119494106459499911}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2d1df966d4004b2da1baa3cefce9908, type: 2}
+  m_Controller: {fileID: 9100000, guid: 066ac71795b8d41a7927a3eb2198733e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3852,8 +3852,8 @@ MonoBehaviour:
   detectionRange: 15
   pushForce: 5
   attackCooldown: 1
-  dodgeDistance: 5
   dodgeCooldown: 2
+  dodgeForce: 10
 --- !u!114 &2283334839145999835
 MonoBehaviour:
   m_ObjectHideFlags: 0

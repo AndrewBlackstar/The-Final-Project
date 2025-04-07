@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6755475474800270191}
   m_Layer: 0
   m_Name: Bullet_Pistol_rubber duck
-  m_TagString: Untagged
+  m_TagString: bulletDuck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
