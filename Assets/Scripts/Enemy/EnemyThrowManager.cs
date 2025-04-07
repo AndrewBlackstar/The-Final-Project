@@ -26,13 +26,13 @@ public class EnemyThrowManager : MonoBehaviour
         {
             GameObject objToThrow = objectQueue[0];
             objectQueue.RemoveAt(0);
-            ThrowObject(objToThrow);
+            //ThrowObject(objToThrow);
         }
 
         isHoldingObject = false;
     }
     
-    private void ThrowObject(GameObject obj)
+   /* private void ThrowObject(GameObject obj)
     {
         if (obj == null) return;
         
@@ -50,5 +50,5 @@ public class EnemyThrowManager : MonoBehaviour
 
             Debug.Log($"Lanzando {obj.name} hacia el jugador");
         }
-    }
+    }*/
 }
