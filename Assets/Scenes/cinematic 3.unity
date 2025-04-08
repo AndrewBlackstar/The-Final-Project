@@ -4672,6 +4672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireVfx: {fileID: 0}
   hitBox: {fileID: 0}
 --- !u!4 &370689604 stripped
 Transform:
@@ -5860,6 +5861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireVfx: {fileID: 0}
   hitBox: {fileID: 0}
 --- !u!114 &438992172
 MonoBehaviour:
@@ -7108,6 +7110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireVfx: {fileID: 0}
   hitBox: {fileID: 0}
 --- !u!114 &524855198
 MonoBehaviour:
@@ -14008,7 +14011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -15726,6 +15729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireVfx: {fileID: 0}
   hitBox: {fileID: 0}
 --- !u!114 &1135105205
 MonoBehaviour:
@@ -24755,6 +24759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca9c461668eb049bf2e5882ed871f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireVfx: {fileID: 0}
   hitBox: {fileID: 0}
 --- !u!114 &1803228108
 MonoBehaviour:

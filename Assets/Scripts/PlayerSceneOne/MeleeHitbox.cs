@@ -3,6 +3,7 @@
 public class MeleeHitbox : MonoBehaviour
 {
     public int meleeDamage = 200;
+    [SerializeField] ParticleSystem MeleeVfx;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,6 +12,7 @@ public class MeleeHitbox : MonoBehaviour
             var health = other.GetComponent<HealthManager>();
             if (health != null)
             {
+                MeleeVfx.Play();
                 health.takeDamage(meleeDamage);
                 Debug.Log($"🗡️ Golpe cuerpo a cuerpo a {other.name}, daño: {meleeDamage}");
 

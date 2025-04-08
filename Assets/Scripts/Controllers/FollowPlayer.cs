@@ -3,7 +3,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
-    
+
     private Vector3 offset = new Vector3(0f, 7f, -9f);
     public float RotationSpeed = 200.0f;
     public float zoomSpeed = 2.0f;
@@ -12,35 +12,24 @@ public class FollowPlayer : MonoBehaviour
     public float smoothSpeed = 5f;
     public float zoomSmoothSpeed = 10f;
 
+    public float lookAtHeight = 1.5f; // Altura de la cabeza para mirar
+
     private float yaw = 0f;
     private float pitch = 0f;
     private float targetZoom;
     private bool isFirstPerson = false;
-    public Vector3 firstPersonOffset = new Vector3(0f, 0f, 0f);
+    public Vector3 firstPersonOffset = new Vector3(0f, 1.5f, 0f);
 
     private float hudTimer = 0f;
     public float hudDisplayTime = 2f;
 
-    public Vector3 rotationOffset = new Vector3(0, 10, 0); // Ajuste de rotación adicional
+    public Vector3 rotationOffset = new Vector3(0, 10, 0);
 
     void Start()
     {
+        targetZoom = offset.magnitude;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        targetZoom = offset.magnitude;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            isFirstPerson = !isFirstPerson;
-            hudTimer = hudDisplayTime;
-            if (player != null)
-            {
-                player.SetActive(!isFirstPerson);
-            }
-        }
     }
 
     void LateUpdate()
@@ -64,16 +53,15 @@ public class FollowPlayer : MonoBehaviour
             float mouseY = Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime;
 
             yaw += mouseX;
-            pitch -= mouseY; // Se invierte el eje Y para un control más natural
-            pitch = Mathf.Clamp(pitch, -100f, 10f);
+            pitch -= mouseY;
+            pitch = Mathf.Clamp(pitch, -40f, 60f);
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             targetZoom -= scroll * zoomSpeed;
             targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
+
             float smoothZoom = Mathf.Lerp(offset.magnitude, targetZoom, Time.deltaTime * zoomSmoothSpeed);
-            
-            // Mantener las proporciones del offset al hacer zoom
-            offset *= smoothZoom / offset.magnitude;
+            offset = offset.normalized * smoothZoom;
 
             Quaternion rotationOffsetQuat = Quaternion.Euler(rotationOffset);
             Quaternion targetRotation = Quaternion.Euler(pitch, yaw, 0) * rotationOffsetQuat;
@@ -81,7 +69,10 @@ public class FollowPlayer : MonoBehaviour
             Vector3 desiredPosition = player.transform.position + rotatedOffset;
 
             transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * smoothSpeed);
-            transform.LookAt(player.transform.position);
+
+            // Centro de enfoque ajustado a la altura de la cabeza
+            Vector3 lookAtTarget = player.transform.position + Vector3.up * lookAtHeight;
+            transform.LookAt(lookAtTarget);
         }
 
         if (hudTimer > 0)
@@ -90,17 +81,31 @@ public class FollowPlayer : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    public void TogglePerspective()
     {
-        if (hudTimer > 0)
+        isFirstPerson = !isFirstPerson;
+        if (!isFirstPerson)
         {
-            GUIStyle style = new GUIStyle();
-            style.fontSize = 20;
-            style.normal.textColor = Color.white;
-            style.fontStyle = FontStyle.Bold;
-
-            string modeText = isFirstPerson ? "First Person Mode" : "Third Person Mode";
-            GUI.Label(new Rect(10, 10, 300, 30), modeText, style);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
+    }
+
+    public void ResetCameraPosition()
+    {
+        yaw = 0f;
+        pitch = 0f;
+        offset = new Vector3(0f, 7f, -9f);
+        targetZoom = offset.magnitude;
+    }
+
+    public void ShowHUD()
+    {
+        hudTimer = hudDisplayTime;
+    }
+
+    public bool IsHUDVisible()
+    {
+        return hudTimer > 0;
     }
 }

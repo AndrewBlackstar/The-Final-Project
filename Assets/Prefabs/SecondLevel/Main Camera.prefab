@@ -113,6 +113,7 @@ MonoBehaviour:
   maxZoom: 10
   smoothSpeed: 5
   zoomSmoothSpeed: 10
+  lookAtHeight: 3
   firstPersonOffset: {x: 0, y: 0, z: 0}
   hudDisplayTime: 2
   rotationOffset: {x: 25, y: 0, z: 0}
@@ -139,7 +140,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
