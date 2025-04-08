@@ -2411,6 +2411,7 @@ MonoBehaviour:
   jumpForce: 300
   runMultiplier: 8
   cameraTransform: {fileID: 0}
+  maxJumps: 2
   stepHeight: 0.35
   stepSmooth: 0.1
 --- !u!54 &714072461668019636

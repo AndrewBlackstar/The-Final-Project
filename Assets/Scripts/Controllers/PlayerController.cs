@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
 
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             Run(moveDirection);
         }
@@ -108,28 +108,58 @@ public class PlayerController : MonoBehaviour
     }
 
     private void NormalJump()
-    {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        isGrounded = false;
-        hasJumped = true;
+{
+    float moveX = Input.GetAxis("Horizontal");
+    float moveZ = Input.GetAxis("Vertical");
 
-        if (animatorPlayer != null)
-        {
-            animatorPlayer.SetBool("isJumping", true);
-        }
+    Vector3 forward = cameraTransform.forward;
+    Vector3 right = cameraTransform.right;
+    forward.y = 0;
+    right.y = 0;
+    forward.Normalize();
+    right.Normalize();
+
+    Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
+
+    Vector3 jumpDirection = moveDirection * moveForce + Vector3.up * jumpForce;
+    rb.AddForce(jumpDirection, ForceMode.Impulse);
+
+    isGrounded = false;
+    hasJumped = true;
+
+    if (animatorPlayer != null)
+    {
+        animatorPlayer.SetBool("isJumping", true);
     }
+}
+
 
     private void RunJump()
-    {
-        rb.AddForce(Vector3.up * (jumpForce * 1.2f), ForceMode.Impulse);
-        isGrounded = false;
-        hasJumped = true;
+{
+    float moveX = Input.GetAxis("Horizontal");
+    float moveZ = Input.GetAxis("Vertical");
 
-        if (animatorPlayer != null)
-        {
-            animatorPlayer.SetBool("isJumping", true);
-        }
+    Vector3 forward = cameraTransform.forward;
+    Vector3 right = cameraTransform.right;
+    forward.y = 0;
+    right.y = 0;
+    forward.Normalize();
+    right.Normalize();
+
+    Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
+
+    Vector3 jumpDirection = moveDirection * moveForce * runMultiplier + Vector3.up * (jumpForce * 1.2f);
+    rb.AddForce(jumpDirection, ForceMode.Impulse);
+
+    isGrounded = false;
+    hasJumped = true;
+
+    if (animatorPlayer != null)
+    {
+        animatorPlayer.SetBool("isJumping", true);
     }
+}
+
 
     private void OnCollisionEnter(Collision collision)
     {
