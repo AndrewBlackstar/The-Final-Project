@@ -7,6 +7,9 @@ public class PlayerCombat : MonoBehaviour
     private float attackCooldown = 0.5f;
     MovementPlayer player;
 
+    [SerializeField] ParticleSystem fireVfx;
+    
+
     [SerializeField] private GameObject hitBox;
 
     public bool isMeleeDefending { get; private set; } = false;
@@ -22,6 +25,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            fireVfx.Play();
             HandleFire();
         }
         else if (Input.GetButtonDown("Fire2"))

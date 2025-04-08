@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public class MomEnemyController : MonoBehaviour
 {
@@ -22,11 +23,15 @@ public class MomEnemyController : MonoBehaviour
     private bool isAttacking = false;
 
     private Animator animator;
+    private NavMeshAgent agent;
+
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         animator.SetBool("isWalking", false);
+
     }
 
     void Update()
@@ -44,11 +49,12 @@ public class MomEnemyController : MonoBehaviour
         {
             walkTimer += Time.deltaTime;
 
-            MoveTowardsPlayer();
+            agent.SetDestination(player.position);
 
             if (walkTimer >= walkDuration)
             {
                 StopWalking();
+                agent.ResetPath(); // detiene el movimiento
                 StartCoroutine(PerformAttack());
             }
         }
@@ -93,6 +99,7 @@ public class MomEnemyController : MonoBehaviour
 
     IEnumerator PerformAttack()
     {
+        AudioManager.Instance.PlaySfx("slap");
         isAttacking = true;
         animator.SetTrigger("attack");
 

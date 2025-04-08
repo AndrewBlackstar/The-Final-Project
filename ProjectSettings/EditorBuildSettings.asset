@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/cinematic 1.unity
     guid: 4c32b7278392620418817c7f747621b3
   - enabled: 1
-    path: Assets/Scenes/FirstLevelSceneLu.unity
+    path: Assets/Scenes/GameCoreScenes/FirstLevelSceneLu.unity
     guid: 28c0e508c00727a42a1185a9d2057106
   - enabled: 1
     path: Assets/Scenes/cinematic 2.unity
