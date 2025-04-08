@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IMovable
 {
     [Header("Player Settings")]
     public Transform player;
+    private HealthManager playerHealth;
     public float attackRange = 2f;
     public float detectionRange = 15f;
     public float pushForce = 5f;
     public float attackCooldown = 1f;
+    protected bool isAttacking = false;
 
     protected Rigidbody enemyRb;
     protected float lastAttackTime = 0f;
@@ -46,6 +50,7 @@ public class EnemyBase : MonoBehaviour, IMovable
         player = GameObject.FindWithTag("Player").transform;
         enemyRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        playerHealth = player.GetComponent<HealthManager>();
 
         enemyRb.isKinematic = false;
         enemyRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -54,55 +59,128 @@ public class EnemyBase : MonoBehaviour, IMovable
 
     protected virtual void Update()
     {
+        if (player == null || isAttacking)
+        {
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isAttacking", false);
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (distance <= detectionRange)
+        if (distance > detectionRange)
         {
-            if (distance > attackRange)
-            {
-                MoveTowardsPlayer();
-            }
-            else if (Time.time >= lastAttackTime + attackCooldown)
-            {
-                lastAttackTime = Time.time;
-                AttackPlayer();
-            }
+            // Muy lejos, solo Idle
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isAttacking", false);
+            enemyRb.linearVelocity = Vector3.zero;
+            return;
+        }
+
+        if (distance > attackRange)
+        {
+            // Dentro del rango de detección, pero aún lejos para atacar
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isAttacking", false);
+            MoveTowardsPlayer();
         }
         else
         {
+            // Dentro del rango de ataque
             animator.SetBool("isRunning", false);
+
+            if (!isAttacking && Time.time >= lastAttackTime + attackCooldown)
+            {
+                StartCoroutine(AttackSequence());
+            }
         }
     }
+
+
+
+    protected void StopMoving()
+    {
+        enemyRb.linearVelocity = new Vector3(0, enemyRb.linearVelocity.y, 0);
+        animator.SetBool("isRunning", false);
+    }
+
 
     protected virtual void MoveTowardsPlayer()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        enemyRb.linearVelocity = new Vector3(direction.x * Speed, enemyRb.linearVelocity.y, direction.z * Speed);
+        Vector3 direction = (player.position - transform.position);
+        direction.y = 0;
+        direction.Normalize();
 
-        if (direction != Vector3.zero)
+        Vector3 movement = direction * Speed;
+        enemyRb.linearVelocity = new Vector3(movement.x, enemyRb.linearVelocity.y, movement.z);
+
+        animator.SetBool("isRunning", true); // ✅ Aquí se asegura que se anime
+        animator.SetBool("isAttacking", false);
+
+        if (direction.magnitude > 0.01f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
-
-        animator.SetBool("isRunning", true);
     }
 
-    protected virtual void AttackPlayer()
+
+
+    public virtual IEnumerator AttackSequence()
     {
-        if (player.TryGetComponent(out Rigidbody playerRb))
+        isAttacking = true;
+
+        // Forzamos la animación directamente
+        animator.CrossFade("monster punch", 0.1f);
+
+        float attackDuration = GetAnimationLength("monster punch");
+
+        yield return new WaitForSeconds(attackDuration * 0.3f);
+
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance <= attackRange + 0.5f)
         {
-            Vector3 pushDirection = (player.position - transform.position).normalized;
-            playerRb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+            if (playerHealth != null && distance <= attackRange + 0.5f)
+            {
+                playerHealth.takeDamage(45f);
+                Debug.Log("💢 El enemigo hizo daño al jugador.");
+            }
+
+            if (player.TryGetComponent(out Rigidbody playerRb))
+            {
+                Vector3 pushDirection = (player.position - transform.position).normalized;
+                playerRb.AddForce(pushDirection * (pushForce * 0.2f), ForceMode.Impulse);
+            }
         }
 
-        if (player.TryGetComponent(out HealthManager healthManager))
-        {
-            healthManager.takeDamage(10f);
-        }
+        yield return new WaitForSeconds(attackDuration * 0.7f);
 
-        animator.SetTrigger("attack");
+        // Ya no hace falta apagar nada si usamos CrossFade o HasExitTime
+        isAttacking = false;
+        lastAttackTime = Time.time;
     }
+
+
+
+    public float GetAnimationLength(string animationName)
+    {
+        if (animator == null) return 0f;
+
+        RuntimeAnimatorController ac = animator.runtimeAnimatorController;
+        foreach (var clip in ac.animationClips)
+        {
+            if (clip.name == animationName)
+            {
+                return clip.length;
+            }
+        }
+
+        Debug.LogWarning($"⚠️ No se encontró el clip '{animationName}' en el Animator.");
+        return 1f; // Duración por defecto si no lo encuentra
+    }
+
+
+
 
     public virtual void Die()
     {

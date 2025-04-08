@@ -27,6 +27,12 @@ public class HealthManager : MonoBehaviour
 
     public void takeDamage(float damageAmmount)
     {
+        if (TryGetComponent<EnemyDodge>(out var dodge) && dodge.isDodging)
+        {
+            Debug.Log("🛡️ Daño evitado por dodge");
+            return;
+        }
+
         if (isDead) return; // Evita que tome daño muerto
         currentHealth -=damageAmmount;
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3265461952749740452}
   - component: {fileID: 5076826069760602390}
   - component: {fileID: 6773453258209760834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletCanon
   m_TagString: Canon
   m_Icon: {fileID: 0}
@@ -110,9 +110,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7934263414032629495}
     m_Modifications:
+    - target: {fileID: 1017566096282904768, guid: bc142210df3ec4545a4e3e1f21e00da7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3473529909581181512, guid: bc142210df3ec4545a4e3e1f21e00da7, type: 3}
       propertyPath: m_Name
       value: vfx_Projectile_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473529909581181512, guid: bc142210df3ec4545a4e3e1f21e00da7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4559080999636468818, guid: bc142210df3ec4545a4e3e1f21e00da7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -153,6 +161,14 @@ PrefabInstance:
     - target: {fileID: 4559080999636468818, guid: bc142210df3ec4545a4e3e1f21e00da7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287990389288925174, guid: bc142210df3ec4545a4e3e1f21e00da7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139904261238893799, guid: bc142210df3ec4545a4e3e1f21e00da7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,6 +9,8 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] private GameObject hitBox;
 
+    public bool isMeleeDefending { get; private set; } = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -41,31 +43,35 @@ public class PlayerCombat : MonoBehaviour
     {
         if (animator.GetBool("hasSword")) return;
 
-        Debug.Log($"🔍 Intentando disparar. Arma actual: {currentWeapon?.gameObject.name ?? "❌ Ninguna asignada"}");
+        
 
         if (animator.GetBool("hasWeapon") && currentWeapon != null)
         {
             currentWeapon.FireBullet();
         }
-        else
-        {
-            Debug.LogError("❌ No hay arma asignada a PlayerCombat.");
-        }
+        
     }
     private void HandleMelee()
     {
         animator.SetBool("isAttacking", true);
-        
-        // Activa la hitbox un momento después (o usa evento de animación)
+
+        isMeleeDefending = true; // ← Activamos la defensa
+
         Invoke(nameof(ActivateHitbox), 0.2f);
         Invoke(nameof(DeactivateHitbox), 0.4f);
 
         Invoke(nameof(ResetAttack), attackCooldown);
+        Invoke(nameof(DisableDefense), attackCooldown); // ← Desactivamos la defensa después del ataque
     }
 
     private void ActivateHitbox()
     {
         hitBox.SetActive(true);
+    }
+
+    private void DisableDefense()
+    {
+        isMeleeDefending = false;
     }
 
     private void DeactivateHitbox()
@@ -82,12 +88,12 @@ public class PlayerCombat : MonoBehaviour
     {
         if (newWeapon == null)
         {
-            Debug.LogError("❌ SetCurrentWeapon recibió un arma NULL.");
+            
             return;
         }
 
         currentWeapon = newWeapon;
-        Debug.Log($"✅ PlayerCombat ha recibido el arma: {newWeapon.gameObject.name}");
+        
     }
 
     public void EquipDefaultWeaponFromSignal()

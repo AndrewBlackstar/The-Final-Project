@@ -2,7 +2,7 @@
 
 public class MeleeHitbox : MonoBehaviour
 {
-    public int meleeDamage = 10;
+    public int meleeDamage = 200;
 
     private void OnTriggerEnter(Collider other)
     {
