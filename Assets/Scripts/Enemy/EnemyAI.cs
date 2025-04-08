@@ -1,79 +1,104 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.AI;
 
 public class EnemyAI : EnemyDodge
 {
-    public GameObject throwablePrefab;
     public Transform throwPoint;
     public float throwCooldown = 3f;
+    public float minimumDistance = 7f;
 
     protected float lastThrowTime = 0f;
     private bool isThrowing = false;
 
     protected override void Update()
     {
+        if (player == null || isThrowing)
+        {
+            animator.SetBool("isRunning", false);
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if (isThrowing) return;
-
-        if (distance <= detectionRange && distance > attackRange)
+        if (distance > detectionRange)
         {
-            if (Time.time >= lastThrowTime + throwCooldown)
-            {
-                StartCoroutine(ThrowSequence());
-                lastThrowTime = Time.time;
-            }
+            StopMoving();
+            return;
+        }
 
-            animator.SetBool("isRunning", false);
+        if (distance > attackRange)
+        {
+            if (distance > minimumDistance)
+                MoveTowardsPlayer();
+            else
+                StopMoving();
+
+            if (!isAttacking && Time.time >= lastThrowTime + throwCooldown)
+            {
+                lastThrowTime = Time.time;
+                StartCoroutine(AttackSequence());
+            }
         }
         else
         {
-            base.Update(); // Movimiento y ataque cuerpo a cuerpo
-        }
-
-        if (Time.time >= lastDodgeTime + dodgeCooldown)
-        {
-            Dodge();
-            lastDodgeTime = Time.time;
+            StopMoving();
         }
     }
 
-    IEnumerator ThrowSequence()
+    public override IEnumerator AttackSequence()
     {
+        Debug.Log("🔥 Iniciando secuencia de ataque con fuego");
+
+        isAttacking = true;
         isThrowing = true;
 
-        //animator.SetTrigger("crouch");
-        yield return new WaitForSeconds(0.8f); // tiempo para la animación
+        animator.CrossFade("monster punch", 0.1f);
 
-        //animator.SetTrigger("throw");
-        yield return new WaitForSeconds(0.6f); // tiempo antes de lanzar
+        yield return new WaitForSeconds(0.5f); // Tiempo para coincidir con animación
 
-        LaunchObject();
+        LaunchFireball();
 
-        yield return new WaitForSeconds(0.5f); // terminar animación
+        yield return new WaitForSeconds(0.5f); // Espera antes de permitir otro ataque
+
         isThrowing = false;
+        isAttacking = false;
+
+        Debug.Log("✅ Ataque de fuego completado");
     }
 
-    void LaunchObject()
+    private void LaunchFireball()
     {
-        if (throwablePrefab && throwPoint)
+        if (throwPoint == null)
         {
-            GameObject obj = Instantiate(throwablePrefab, throwPoint.position, throwPoint.rotation);
-            Rigidbody rb = obj.GetComponent<Rigidbody>();
-            Vector3 dir = (player.position - throwPoint.position).normalized;
-            rb.linearVelocity = dir * 12f;
+            Debug.LogWarning("⚠️ throwPoint no está asignado en el inspector.");
+            return;
+        }
 
-            Debug.Log(" Lanzamiento finalizado");
-        }
-    }
-    public override void Die()
-    {
-        // Cambiar de escena usando el GameManager
-        if (GameManager.instance != null)
+        Vector3 spawnPos = throwPoint.position + throwPoint.forward * 0.5f;
+        Vector3 direction = (player.position - spawnPos).normalized;
+        Quaternion rot = Quaternion.LookRotation(direction);
+
+        GameObject fireball = FireballPool.instance.GetFireball(spawnPos, rot);
+
+        // Ignorar colisiones con el enemigo
+        Collider fireballCol = fireball.GetComponent<Collider>();
+        Collider[] enemyColliders = GetComponentsInChildren<Collider>();
+
+        foreach (Collider col in enemyColliders)
         {
-            GameManager.instance.LoadScene("cinematic 3"); 
+            if (fireballCol != null && col != null)
+            {
+                Physics.IgnoreCollision(fireballCol, col);
+            }
         }
+
+        Fireball fireballScript = fireball.GetComponent<Fireball>();
+        if (fireballScript != null)
+        {
+            fireballScript.SetTarget(player); // ← aquí está el cambio importante
+        }
+
+        Debug.Log("🔥 Fireball lanzada desde " + throwPoint.name);
     }
+
 }

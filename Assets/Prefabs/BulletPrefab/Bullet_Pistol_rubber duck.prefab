@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2754049312403150557}
   - component: {fileID: 8190593849935119121}
   - component: {fileID: 6755475474800270191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet_Pistol_rubber duck
   m_TagString: bulletDuck
   m_Icon: {fileID: 0}

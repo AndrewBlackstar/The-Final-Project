@@ -36,7 +36,7 @@ public class BulletCanon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"💥 Bala impactó con: {collision.gameObject.name}");
+        
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -46,7 +46,7 @@ public class BulletCanon : MonoBehaviour
             if (health != null)
             {
                 health.takeDamage(damage);
-                Debug.Log($"🩸 Daño aplicado: {damage} a {collision.gameObject.name}");
+                
             }
 
             // Aplicar efecto de ralentización
@@ -54,7 +54,7 @@ public class BulletCanon : MonoBehaviour
             if (slowEffect != null)
             {
                 slowEffect.ApplySlow(slowPercentage, slowDuration);
-                Debug.Log($"⏳ Aplicando efecto de ralentización al enemigo: {collision.gameObject.name}");
+                
             }
             else
             {

@@ -6,45 +6,81 @@ public class EnemyDodge : EnemyBase
     public float dodgeForce = 10f;
     protected float lastDodgeTime = 0f;
 
-    public float threatDetectionAngle = 45f; // Margen de ángulo permitimos para detectar la amenaza
+    public float threatDetectionRadius = 10f; // radio de detección anticipada
+    public float threatDetectionAngle = 45f;
 
-    private void OnTriggerEnter(Collider other)
+    public float invulnerabilityDuration = 0.5f;
+    public bool isDodging = false;
+
+    public LayerMask threatLayer;
+
+    protected override void Update()
     {
-        if (Time.time < lastDodgeTime + dodgeCooldown) return;
+        base.Update();
+        DetectThreats(); // ahora escanea cada frame
+    }
 
-        if (other.CompareTag("bulletDuck") || other.CompareTag("canon") || other.CompareTag("sword"))
+    private void DetectThreats()
+    {
+        if (Time.time < lastDodgeTime + dodgeCooldown || isDodging) return;
+
+        Debug.Log("👀 Buscando amenazas cercanas...");
+
+        Collider[] threats = Physics.OverlapSphere(transform.position, threatDetectionRadius, threatLayer);
+
+        if (threats.Length == 0)
         {
-            Rigidbody threatRb = other.GetComponent<Rigidbody>();
+            Debug.Log("❌ No hay amenazas en el radio.");
+            return;
+        }
+
+        foreach (Collider threat in threats)
+        {
+            Debug.Log("🟠 Detectado: " + threat.name);
+
+            if (!threat.CompareTag("bulletDuck") && !threat.CompareTag("Canon") && !threat.CompareTag("Sword"))
+            {
+                Debug.Log("⚠️ Objeto detectado no tiene un tag de amenaza: " + threat.tag);
+                continue;
+            }
+
+            Rigidbody threatRb = threat.GetComponent<Rigidbody>();
             if (threatRb != null)
             {
-                Vector3 toEnemy = (transform.position - other.transform.position).normalized;
-                Vector3 threatDir = threatRb.velocity.normalized;
+                Vector3 toEnemy = (transform.position - threat.transform.position).normalized;
+                Vector3 threatDir = threatRb.linearVelocity.normalized;
 
                 float angle = Vector3.Angle(threatDir, toEnemy);
+                Debug.Log($"📐 Ángulo de amenaza: {angle}");
 
                 if (angle <= threatDetectionAngle)
                 {
+                    Debug.Log("✅ Amenaza válida detectada. Ejecutando dodge.");
                     Dodge();
-                    lastDodgeTime = Time.time;
+                    break;
                 }
                 else
                 {
-                    Debug.Log("No esquiva porque no viene directo hacia él");
+                    Debug.Log("🔵 La amenaza no viene hacia el enemigo. Ángulo muy amplio.");
                 }
             }
             else
             {
-                // Si no tiene Rigidbody igual esquiva (por si es un ataque cuerpo a cuerpo)
+                Debug.Log("⚠️ Amenaza sin Rigidbody, igual esquivamos.");
                 Dodge();
-                lastDodgeTime = Time.time;
+                break;
             }
         }
     }
 
+
     protected void Dodge()
     {
-        bool dodgeLeft = Random.value > 0.5f;
+        if (isDodging) return;
 
+        isDodging = true;
+
+        bool dodgeLeft = Random.value > 0.5f;
         Vector3 dodgeDir = Vector3.Cross((player.position - transform.position).normalized, Vector3.up);
         if (!dodgeLeft) dodgeDir = -dodgeDir;
 
@@ -52,7 +88,23 @@ public class EnemyDodge : EnemyBase
 
         animator.SetBool("isLeft", dodgeLeft);
         animator.SetTrigger("dodge");
+        animator.Play(dodgeLeft ? "monster dodge left" : "monster dodge right");
 
-        Debug.Log("Esquivando hacia " + (dodgeLeft ? "izquierda" : "derecha"));
+        Debug.Log("🌀 Esquivando hacia " + (dodgeLeft ? "izquierda" : "derecha"));
+
+        StartCoroutine(DodgeCooldown());
+    }
+
+    private System.Collections.IEnumerator DodgeCooldown()
+    {
+        lastDodgeTime = Time.time;
+        yield return new WaitForSeconds(invulnerabilityDuration);
+        isDodging = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, threatDetectionRadius);
     }
 }

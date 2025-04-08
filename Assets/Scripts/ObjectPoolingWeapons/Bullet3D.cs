@@ -34,7 +34,7 @@ public class Bullet3D : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"💥 Bala impactó con: {collision.gameObject.name}");
+        
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -44,7 +44,7 @@ public class Bullet3D : MonoBehaviour
             if (health != null)
             {
                 health.takeDamage(damage);
-                Debug.Log($"🩸 Daño aplicado: {damage} a {collision.gameObject.name}");
+                
             }
         }
 

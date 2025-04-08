@@ -64,19 +64,19 @@ public class WeaponWheelController : MonoBehaviour
                 animator.SetBool("hasWeapon", true);
                 animator.SetBool("hasSword", false);
                 newWeapon = player.transform.Find("Cannon")?.GetComponent<WeaponController>();
-                Debug.Log("🔫 Cañón equipado.");
+                
                 break;
             case 2: // Pistola
                 animator.SetBool("hasWeapon", true);
                 animator.SetBool("hasSword", false);
                 newWeapon = player.transform.Find("Pistol")?.GetComponent<WeaponController>();
-                Debug.Log("🔫 Pistola equipada.");
+                
                 break;
             case 3: // Espada
                 animator.SetBool("hasWeapon", false);
                 animator.SetBool("hasSword", true);
                 newWeapon = null;
-                Debug.Log("🗡️ Espada equipada.");
+                
                 break;
         }
 
