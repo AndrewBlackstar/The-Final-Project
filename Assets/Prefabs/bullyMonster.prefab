@@ -2421,9 +2421,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.8825425
+  m_Height: 2.0492232
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9259396, z: 0}
+  m_Center: {x: 0, y: 0.8425993, z: 0}
 --- !u!54 &8924754190962500884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3444,7 +3444,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
