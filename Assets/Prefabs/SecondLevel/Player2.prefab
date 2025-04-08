@@ -2351,7 +2351,7 @@ GameObject:
   - component: {fileID: 3418730199483849975}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2408,9 +2408,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 2
-  jumpForce: 250
+  jumpForce: 300
   runMultiplier: 8
   cameraTransform: {fileID: 0}
+  stepHeight: 0.35
+  stepSmooth: 0.1
 --- !u!54 &714072461668019636
 Rigidbody:
   m_ObjectHideFlags: 0

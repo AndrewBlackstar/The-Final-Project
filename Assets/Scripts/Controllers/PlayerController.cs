@@ -1,11 +1,10 @@
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
     public float moveForce = 2f;
     public float jumpForce = 200f;
-    public float runMultiplier = 4f; // Factor de velocidad al correr
+    public float runMultiplier = 4f;
 
     public Transform cameraTransform;
     private Rigidbody rb;
@@ -14,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool hasJumped;
     private bool isRunning;
+
+    public float stepHeight = 0.35f;
+    public float stepSmooth = 0.1f;
 
     private void Awake()
     {
@@ -26,58 +28,56 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.linearDamping = 5f; // Damping para suavizar el movimiento
-        rb.angularDamping = 5f; // Damping para suavizar la rotación
+        rb.linearDamping = 5f;
+        rb.angularDamping = 5f;
         animatorPlayer = GetComponent<Animator>();
-        
+
         hasJumped = false;
         isGrounded = true;
         isRunning = false;
     }
 
     void FixedUpdate()
-{
-    float moveX = Input.GetAxis("Horizontal");
-    float moveZ = Input.GetAxis("Vertical");
-
-    Vector3 forward = cameraTransform.forward;
-    Vector3 right = cameraTransform.right;
-    forward.y = 0;
-    right.y = 0;
-    forward.Normalize();
-    right.Normalize();
-
-    Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
-
-    if (Input.GetKey(KeyCode.R))
     {
-        Run(moveDirection);
-    }
-    else
-    {
-        Move(moveDirection);
-    }
-    
-    if (moveDirection.magnitude > 0.1f)
-    {
-        Rotation(moveDirection);
-    }               
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
 
-    // Salto normal cuando NO está corriendo
-    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRunning)
-    {            
-        NormalJump();
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            Run(moveDirection);
+        }
+        else
+        {
+            Move(moveDirection);
+        }
+
+        if (moveDirection.magnitude > 0.1f)
+        {
+            Rotation(moveDirection);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRunning)
+        {
+            NormalJump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && isRunning)
+        {
+            RunJump();
+        }
+
+        StepClimb(); // <<-- Aquí se llama la función de escalones
     }
 
-    // Salto de carrera cuando está corriendo
-    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && isRunning)
-    {
-        RunJump();
-    }
-}
-
-
-    // Caminar
     private void Move(Vector3 direction)
     {
         isRunning = false;
@@ -85,19 +85,17 @@ public class PlayerController : MonoBehaviour
 
         if (animatorPlayer != null)
         {
-            animatorPlayer.SetBool("isRunning", false); // <-- Desactiva la animación de correr
-            animatorPlayer.SetBool("isWalking", direction.magnitude > 0.1f); // <-- Activa la animación de caminar
+            animatorPlayer.SetBool("isRunning", false);
+            animatorPlayer.SetBool("isWalking", direction.magnitude > 0.1f);
         }
     }
 
-    // Rotar el personaje
     private void Rotation(Vector3 direction)
-    {       
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);        
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
     }
-    
-    // Correr
+
     private void Run(Vector3 direction)
     {
         isRunning = true;
@@ -107,57 +105,75 @@ public class PlayerController : MonoBehaviour
         {
             animatorPlayer.SetBool("isRunning", true);
         }
-
-        
     }
 
-    // Salto normal
-private void NormalJump()
-{
-    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    isGrounded = false;
-    hasJumped = true;
-
-    if (animatorPlayer != null)
+    private void NormalJump()
     {
-        animatorPlayer.SetBool("isJumping", true);
-    }
-}
-
-// Salto cuando corre (puede ser más largo o más alto si quieres)
-private void RunJump()
-{
-    rb.AddForce(Vector3.up * (jumpForce * 1.2f), ForceMode.Impulse); // Aumenta la fuerza del salto si está corriendo
-    isGrounded = false;
-    hasJumped = true;
-
-    if (animatorPlayer != null)
-    {
-        animatorPlayer.SetBool("isJumping", true);
-    }
-}
-
-    // Verifica si el jugador está en el suelo   
-    
-    private void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.CompareTag("Ground"))
-    {
-        isGrounded = true;
-        hasJumped = false;
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isGrounded = false;
+        hasJumped = true;
 
         if (animatorPlayer != null)
         {
-            animatorPlayer.SetBool("isJumping", false);
+            animatorPlayer.SetBool("isJumping", true);
         }
     }
-}
 
-private void OnCollisionStay(Collision collision)
-{
-    if (collision.gameObject.CompareTag("Ground"))
+    private void RunJump()
     {
-        isGrounded = true;
+        rb.AddForce(Vector3.up * (jumpForce * 1.2f), ForceMode.Impulse);
+        isGrounded = false;
+        hasJumped = true;
+
+        if (animatorPlayer != null)
+        {
+            animatorPlayer.SetBool("isJumping", true);
+        }
     }
-}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            hasJumped = false;
+
+            if (animatorPlayer != null)
+            {
+                animatorPlayer.SetBool("isJumping", false);
+            }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    // <<-- Escalones
+    private void StepClimb()
+    {
+        Vector3[] directions = {
+            transform.forward,
+            (transform.forward + transform.right).normalized,
+            (transform.forward - transform.right).normalized
+        };
+
+        foreach (var dir in directions)
+        {
+            RaycastHit hitLower;
+            if (Physics.Raycast(transform.position + Vector3.up * 0.1f, dir, out hitLower, 0.5f))
+            {
+                RaycastHit hitUpper;
+                if (!Physics.Raycast(transform.position + Vector3.up * stepHeight, dir, out hitUpper, 0.5f))
+                {
+                    rb.position += new Vector3(0f, stepSmooth, 0f);
+                    break;
+                }
+            }
+        }
+    }
 }
