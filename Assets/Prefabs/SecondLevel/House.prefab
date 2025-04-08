@@ -3178,6 +3178,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 8230161441210268078, guid: 545deb571a7c53642ba8f25d8be88345, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9562065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230161441210268078, guid: 545deb571a7c53642ba8f25d8be88345, type: 3}
+      propertyPath: m_Size.z
+      value: 0.9463137
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230161441210268078, guid: 545deb571a7c53642ba8f25d8be88345, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0011161804
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230161441210268078, guid: 545deb571a7c53642ba8f25d8be88345, type: 3}
+      propertyPath: m_Center.z
+      value: -0.008945561
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
