@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 207452105}
   - component: {fileID: 207452104}
   - component: {fileID: 207452103}
+  - component: {fileID: 207452107}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -434,6 +435,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &207452107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207452102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e1200c0664e654481dad585424a076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  audioMixer: {fileID: 0}
+  musicSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
+  muteToggle: {fileID: 0}
 --- !u!1001 &247718955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2103,7 +2121,6 @@ GameObject:
   - component: {fileID: 2020517993}
   - component: {fileID: 2020517992}
   - component: {fileID: 2020517991}
-  - component: {fileID: 2020517990}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2132,18 +2149,6 @@ RectTransform:
   m_AnchoredPosition: {x: 605, y: -410}
   m_SizeDelta: {x: 271.685, y: 100.684}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2020517990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020517988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b36c986e79ffa5408b5576163993127, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2020517991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2188,8 +2193,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2020517990}
-        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+      - m_Target: {fileID: 207452107}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:

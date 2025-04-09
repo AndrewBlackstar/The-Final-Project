@@ -101,4 +101,9 @@ public class EnemyAI : EnemyDodge
         Debug.Log("🔥 Fireball lanzada desde " + throwPoint.name);
     }
 
+    public override void Die()
+    {
+        GameManager.instance.LoadScene("cinematic 3");
+    }
+
 }

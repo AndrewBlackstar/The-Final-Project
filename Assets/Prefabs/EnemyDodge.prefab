@@ -3830,7 +3830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1d82ca427eeda468dca454cba621c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1500
+  maxHealth: 1000
   currentHealth: 0
   hasHit: 0
   healthSlider: {fileID: 2091423276147113599}
