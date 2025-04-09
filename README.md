@@ -20,7 +20,7 @@
 ---
 
 ### 🎥 VIDEO DEL GAMEPLAY  
-<a href="" target="_blank">
+<a href="https://youtu.be/hsjjZoKnBF8" target="_blank">
   <img src="./DataGame/PortadaGamePlay.png" alt="Video del Juego">
 </a>
 
