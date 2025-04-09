@@ -7,7 +7,7 @@
 - 👩‍💼 [Luisa Saenz](https://lusaenz.itch.io/) - Project Manager / Enemy Behavior Programmer.
 - 👨‍💻 [Fabian Rincon](https://arcktx.itch.io/) - Programmer.
 - 🎨 [Andres Muñoz](https://andrew-blackstar.itch.io/) - 3D Artist / UI-UX Design.
-- 👨‍💻 [Jose Carranza](https://josedavdmast3r.itch.io/daydream) - Programmer.
+- 👨‍💻 [Jose Carranza](https://josedavdmast3r.itch.io/) - Programmer.
 
 ---
 ### 📁 Documents and Repositories
